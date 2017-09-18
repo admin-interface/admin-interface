@@ -29,6 +29,7 @@ app.listen(3000, () => console.log('run server on 3000 port'));
 
 ### Looking for docs?
 * [Admin Interface Documentation](https://github.com/admin-interface/admin-interface/wiki)
+* [Admin Interface (JSDOC)](https://admin-interface.github.io/admin-interface/)
 * [Sequelize](http://docs.sequelizejs.com/)
 * [Express](https://expressjs.com/en/4x/api.html)
 
