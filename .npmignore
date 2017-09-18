@@ -1,0 +1,6 @@
+src
+test
+flow-typed
+docs
+assets/src
+*.log
