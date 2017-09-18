@@ -1,6 +1,6 @@
 {
   "name": "admin-interface",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.1.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "flow-status": "flow status",
     "check-error": "npm run lint && npm run flow-status",
     "jsdoc": "jsdoc -c ./jsdoc.conf.json -r ./src",
-    "postinstall": "npm run build-frontend && npm run build-backend && npm run bower-install",
+    "prepublishOnly": "npm run check-error && npm run build-frontend && npm run build-backend && npm run bower-install",
     "test": "mocha test --recursive --compilers js:babel-core/register"
   },
   "repository": "git+https://github.com/admin-interface/admin-interface.git",
@@ -28,8 +28,8 @@
     "check-error"
   ],
   "dependencies": {
-    "app-root-path": "^2.0.1",
     "async-file": "^2.0.2",
+    "babel-runtime": "^6.26.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jade": "^1.11.0",
@@ -70,8 +70,6 @@
     "jsdoc-babel": "^0.3.0",
     "minami": "^1.2.3",
     "mocha": "^3.5.0",
-    "morgan": "^1.8.2",
-    "mysql2": "^1.4.1",
     "postcss-smart-import": "^0.7.5",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.1",

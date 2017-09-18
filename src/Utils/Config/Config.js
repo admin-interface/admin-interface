@@ -2,14 +2,14 @@
  * @module src/Utils/Config/Config
  * @flow
  */
-import RootPath from 'app-root-path';
-
+import path from 'path';
 import { yamlConfigParse } from '../Yaml/Parser';
 
 /**
  * Get local configuration
  * @returns {{any}}
  */
-export function getLocalConfig(): {[string]: any} {
-    return yamlConfigParse(RootPath.path, 'admin-interface.yaml');
+export function getLocalConfig(): { [string]: any } {
+    const root = path.join(__dirname, '../../..');
+    return yamlConfigParse(root, 'admin-interface.yaml');
 }
