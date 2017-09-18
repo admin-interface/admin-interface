@@ -1,0 +1,26 @@
+Config:
+    views: []
+    locals:
+        basedir: ./views
+        branding:
+            siteName: Admin Interface
+        blocks: {}
+    staticPath: /static
+    modelPath: /model
+    fieldPath: /field_type
+    apiPath: /api
+    widgetPath: /widget
+
+FieldType:
+    Integer: ./dist/Implementation/FieldType/Integer/Integer.js
+    String: ./dist/Implementation/FieldType/String/String.js
+    Reference: ./dist/Implementation/FieldType/Reference/Reference.js
+    Date: ./dist/Implementation/FieldType/Date/Date.js
+    Select: ./dist/Implementation/FieldType/Select/Select.js
+
+Widget:
+    ModelsInfoWidget: ./dist/Implementation/Widget/ModelsInfoWidget/ModelsInfoWidget.js
+
+Page:
+    Home: ./dist/Implementation/Page/HomePage/HomePage.js
+

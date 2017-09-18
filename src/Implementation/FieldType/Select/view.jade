@@ -1,0 +1,13 @@
+.form-group
+    small= $field.getTitle()
+    .form-line(class= $field.isDisabled() ? 'disabled' : '')
+        select.form-control.show-tick(
+        name= $field.getField(),
+        disabled= $field.isDisabled(),
+        )
+            option(value='') -- Please select --
+            each option in $field.getOptions().options
+                option(
+                value= option,
+                selected= option === value
+                )= option

@@ -1,0 +1,15 @@
+{
+  "plugins": ["node_modules/jsdoc-babel"],
+  "babel": {
+    "babelrc": false,
+    "extensions": ["js"],
+    "presets": [["es2017"], "stage-2"],
+    "plugins": [
+      "transform-flow-strip-types"
+    ]
+  },
+  "opts": {
+    "template": "node_modules/minami",
+    "destination": "./docs/"
+  }
+}

@@ -1,0 +1,18 @@
+mixin menuItem(menuItem)
+    li
+        a(href= Link.getLinkListByContext(menuItem.context), class= menuItem.children ? 'menu-toggle' : '')
+            i.material-icons= menuItem.icon
+            span= menuItem.title
+            span.menu-switch
+
+        if menuItem.children
+            ul.ml-menu
+                each menuChildrenItem in menuItem.children
+                    +menuItem(menuChildrenItem)
+
+.menu
+    ul.list
+        each menu in Registry.getAllMenu()
+            li.header= menu.title
+            each menuItem in menu.items
+                +menuItem(menuItem)
