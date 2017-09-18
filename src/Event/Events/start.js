@@ -1,8 +1,6 @@
 // @flow
 import path from 'path';
 import express from 'express';
-import RootPath from 'app-root-path';
-import morgan from 'morgan';
 import bodyParser from 'body-parser';
 
 import Registry from '../../Services/Registry/ProxyInterface';
@@ -23,7 +21,7 @@ export function startAfter(): void {
 
 export function startEvent(): void {
     // Set admin interface views
-    Registry.pushConfig('views', path.join(RootPath.path, './views'));
+    Registry.pushConfig('views', path.join(__dirname, '../../../views'));
     Registry.getApp().set('view engine', 'jade');
     Registry.getApp().set('views', Registry.getConfig('views'));
 }
@@ -32,7 +30,6 @@ export function startBefore(): void {
     const router = new Router();
 
     Registry.getApp().use(bodyParser.urlencoded({ extended: false }));
-    Registry.getApp().use(Registry.getConfig('staticPath'), express.static(path.join(RootPath.path, 'assets/static')));
-    Registry.getApp().use(morgan('dev'));
+    Registry.getApp().use(Registry.getConfig('staticPath'), express.static(path.join(__dirname, '../../../assets/static')));
     Registry.getApp().use('/', router.getRouter());
 }
