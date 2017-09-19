@@ -114,7 +114,12 @@ setTimeout(function () {
             plugins:  $this.data('tinymce-plugins'),
             toolbar1: $this.data('tinymce-toolbar1'),
             toolbar2: $this.data('tinymce-toolbar2'),
-            readonly: $this.data('disable')
+            readonly: $this.data('disable'),
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            }
         });
     });
 }, 0);
