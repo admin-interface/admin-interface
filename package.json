@@ -1,7 +1,7 @@
 {
   "name": "admin-interface",
-  "version": "1.0.0-alpha.1.8",
-  "description": "",
+  "version": "1.0.0-alpha.1.9",
+  "description": "Library for provide Admin UI",
   "main": "index.js",
   "scripts": {
     "watch": "concurrently --kill-others \"npm run watch-backend\" \"npm run watch-frontend\"",
@@ -26,6 +26,17 @@
   "homepage": "https://github.com/admin-interface/admin-interface#readme",
   "pre-commit": [
     "check-error"
+  ],
+  "keywords": [
+    "admin-panel",
+    "express",
+    "sequelize",
+    "admin",
+    "web",
+    "app",
+    "site",
+    "website",
+    "forms"
   ],
   "dependencies": {
     "async-file": "^2.0.2",
