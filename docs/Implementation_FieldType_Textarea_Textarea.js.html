@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Shared/ModelAbstract/ModelBuilder.js - Documentation</title>
+    <title>Implementation/FieldType/Textarea/Textarea.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Shared/ModelAbstract/ModelBuilder.js</h1>
+    <h1 class="page-title">Implementation/FieldType/Textarea/Textarea.js</h1>
     
 
     
@@ -40,63 +40,27 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// @flow
-import Model from './ModelAbstract';
+import path from 'path';
+import FieldTypeAbstract from '../../../Shared/FieldTypeAbstract/FieldTypeAbstract';
 
 /**
- * Model Builder
+ * Textarea FieldType
+ * @extends FieldTypeAbstract
  */
-class ModelBuilder {
+class Textarea extends FieldTypeAbstract {
     /**
-     * Instance model
-     * @type {Model}
      * @private
      */
-    _model: Model;
+    _options: { [string]: any } = {
+        rows: 4
+    };
 
-    /**
-     * @param {ModelInterface} model - object abstract model
-     */
-    constructor(model: typeof Model) {
-        this._model = new model();
-
-        if (!(this._model instanceof Model)) {
-            throw new TypeError('Expected instance of Model');
-        }
-    }
-
-    /**
-     * Get model
-     * @returns {Model}
-     */
-    getModel(): Model {
-        return this._model;
-    }
-
-    /**
-     * Set key
-     * @param {string} key
-     * @returns {ModelBuilder}
-     */
-    setKey(key: string): this {
-        this._model.setKey(key);
-
-        return this;
-    }
-
-    /**
-     * Build model and get model
-     * @returns {Model}
-     */
-    build(): Model {
-        this._model.setFields();
-        this._model.setColumns();
-        this._model.setReferences();
-
-        return this.getModel();
+    static getThisPath(): string {
+        return path.join(__dirname);
     }
 }
 
-export default ModelBuilder;
+export default Textarea;
 </code></pre>
         </article>
     </section>
