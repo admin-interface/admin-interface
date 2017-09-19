@@ -18,6 +18,7 @@ FieldType:
     Date: ./dist/Implementation/FieldType/Date/Date.js
     Select: ./dist/Implementation/FieldType/Select/Select.js
     Textarea: ./dist/Implementation/FieldType/Textarea/Textarea.js
+    Tinymce: ./dist/Implementation/FieldType/Tinymce/Tinymce.js
 
 Widget:
     ModelsInfoWidget: ./dist/Implementation/Widget/ModelsInfoWidget/ModelsInfoWidget.js

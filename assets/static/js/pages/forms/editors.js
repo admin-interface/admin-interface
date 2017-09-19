@@ -5,7 +5,7 @@ $(function () {
 
     //TinyMCE
     tinymce.init({
-        selector: "textarea#tinymce",
+        selector: "textarea.tinymce-field-type",
         theme: "modern",
         height: 300,
         plugins: [

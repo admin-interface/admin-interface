@@ -37,7 +37,7 @@ $(document).on('click', 'a.delete-single-model[data-action=delete]', function (e
         confirmButtonColor: "#DD6B55",
         confirmButtonText:  "Yes, delete it!",
         cancelButtonText:   "No, cancel!",
-        closeOnConfirm:     false,
+        closeOnConfirm:     false
     }, function (isConfirm) {
         if (isConfirm) {
             $.ajax({
@@ -102,3 +102,19 @@ $(document).on('click', 'a.create-single-model[data-action=create]', function (e
         $form.off('submit', _sendData);
     });
 });
+
+// TinyMCE
+setTimeout(function () {
+    $(document).find('textarea.tinymce-field-type').each(function () {
+        var $this = $(this);
+        tinymce.init({
+            target:   this,
+            theme:    $this.data('tinymce-theme'),
+            height:   $this.data('tinymce-height'),
+            plugins:  $this.data('tinymce-plugins'),
+            toolbar1: $this.data('tinymce-toolbar1'),
+            toolbar2: $this.data('tinymce-toolbar2'),
+            readonly: $this.data('disable')
+        });
+    });
+}, 0);

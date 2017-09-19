@@ -1,0 +1,6 @@
+.form-group
+    small= $field.getTitle()
+    div.tinymce-container
+        textarea.tinymce-field-type(
+        name= $field.getField()
+        )&attributes($field.formatAttributes())=value

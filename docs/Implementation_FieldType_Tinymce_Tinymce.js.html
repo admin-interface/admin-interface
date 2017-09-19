@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Shared/WidgetFactory/WidgetFactory.js - Documentation</title>
+    <title>Implementation/FieldType/Tinymce/Tinymce.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Shared/WidgetFactory/WidgetFactory.js</h1>
+    <h1 class="page-title">Implementation/FieldType/Tinymce/Tinymce.js</h1>
     
 
     
@@ -39,27 +39,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @module src/Shared/WidgetFactory/WidgetFactory
- * @flow
- */
-import Registry from '../../Services/Registry/ProxyInterface';
-import WidgetAbstract from '../WidgetAbstract/WidgetAbstract';
+            <pre class="prettyprint source linenums"><code>// @flow
+import path from 'path';
+import FieldTypeAbstract from '../../../Shared/FieldTypeAbstract/FieldTypeAbstract';
 
 /**
- * Create instance of class WidgetAbstract
- * @param {string} widgetKey
- * @return {WidgetAbstract}
+ * Tinymce FieldType
+ * @extends FieldTypeAbstract
  */
-export function WidgetFactory(widgetKey: string): WidgetAbstract {
-    const widget = Registry.getWidget(widgetKey);
-    if (!widget) {
-        throw new Error(`Widget not found by key ${ widgetKey }`);
+class Tinymce extends FieldTypeAbstract {
+    static getThisPath(): string {
+        return path.join(__dirname);
     }
-    return new widget().setKey(widgetKey);
+
+    /**
+     * Format options to attributes
+     * @returns {{}}
+     */
+    formatAttributes(): { [string]: any } {
+        const attributes = {};
+        Object.keys(this.getOptions()).forEach((key: string) => {
+            attributes[ `data-tinymce-${ key }` ] = this.getOptions()[ key ];
+        });
+        return attributes;
+    }
 }
 
-export default WidgetFactory;
+export default Tinymce;
 </code></pre>
         </article>
     </section>
