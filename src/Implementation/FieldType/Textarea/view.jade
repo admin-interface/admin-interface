@@ -1,0 +1,8 @@
+.form-group
+    small= $field.getTitle()
+    .form-line(class= $field.isDisabled() ? 'disabled' : '')
+        textarea.form-control.no-resize(
+        name= $field.getField(),
+        disabled= $field.isDisabled()
+        rows= $field.getOptions().rows
+        )
