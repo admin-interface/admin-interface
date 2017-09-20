@@ -5,8 +5,29 @@
                 .modal-header
                     h4.modal-title Create a new #{ Model.getNameSingular() }
                 .modal-body
-                    each field in Model.getFields()
-                        != field.type.render()
+                    if Model.getTabs().length
+                        ul.nav.nav-tabs(role="tablist")
+                            each Tab in Model.getTabs()
+                                li(role="presentation", class= Tab.getActive() ? 'active' : '')
+                                    a(href= '#new_' + Tab.getId(), data-toggle='tab')
+                                        if Tab.getIcon()
+                                            i.material-icons= Tab.getIcon()
+                                        != ' ' + Tab.getTitle()
+
+                        .tab-content
+                            each Tab in Model.getTabs()
+                                div.tab-pane.fade(
+                                role="tabpanel",
+                                id= 'new_' + Tab.getId(),
+                                class= Tab.getActive() ? 'in active' : ''
+                                )
+                                    each fieldKey in Tab.getFields()
+                                        - var field = Model.getFieldByKey(fieldKey)
+                                        if field
+                                            != field.type.render()
+                    else
+                        each field in Model.getFields()
+                            != field.type.render()
                 .modal-footer
                     button.btn.btn-link.waves-effect(type='submit') CREATE
                     button.btn.btn-link.waves-effect(type='button', data-dismiss='modal') CLOSE

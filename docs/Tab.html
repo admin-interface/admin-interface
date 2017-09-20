@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Services/EventEmitter/EventEmitter.js - Documentation</title>
+    <title>Tab - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,117 +29,1135 @@
 
 <div id="main">
     
-    <h1 class="page-title">Services/EventEmitter/EventEmitter.js</h1>
+    <h1 class="page-title">Tab</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>// @flow
-import { type SubscriberType } from './Type/SubscriberType';
-import { type HandlerType } from './Type/HandlerType';
-import { EventEmitterInterface } from './Interface/EventEmitterInterface';
+        <h2>
+        Tab
+        </h2>
+        
+            <div class="class-description">Tab class</div>
+        
+    
+</header>
 
-let instance = null;
+<article>
+    <div class="container-overview">
+    
+        
+<div class="section-method">
 
-/**
- * Event Emitter class
- * @implements EventEmitterInterface
- */
-class EventEmitter implements EventEmitterInterface {
-    /**
-     * Collection of subscribers
-     * @type {Array&lt;SubscriberType>}
-     * @private
-     */
-    _subscribers: Array&lt;SubscriberType> = [];
+    
+    <h2>Constructor</h2>
+    
 
-    constructor() {
-        if (!instance) {
-            instance = this;
-        }
-        return instance;
-    }
+    <h4 class="name" id="Tab"><span class="type-signature"></span>new Tab<span class="signature">()</span><span class="type-signature"></span></h4>
 
-    /**
-     * Get instance class
-     *
-     * @returns EventEmitter
-     */
-    static getInstance(): EventEmitter {
-        return new EventEmitter();
-    }
+    
 
-    /**
-     * Subscribe
-     * @param  {string} event - Event key
-     * @param  {HandlerType} handler - Handler of event
-     * @param  {number} priority - Priority
-     * @param  {any} context? - Handler context
-     * @returns void
-     */
-    static subscribe(event: string,
-                     handler: HandlerType,
-                     priority: number = 10,
-                     context?: any): void {
-        const subscriber: SubscriberType = {
-            event,
-            handler: handler.bind(context || handler),
-            priority
-        };
-        this.getInstance().addSubscriber(subscriber);
-    }
 
-    /**
-     * Emit event
-     * @param  {string} event
-     * @param  {any} args?
-     * @returns void
-     */
-    static emit(event: string, args?: any): void {
-        this.getSubscribersByEvent(event)
-            .map(handler => handler.handler(args));
-    }
 
-    /**
-     * Get all subscribers by event from collection
-     * @param  {string} event
-     * @returns {Array&lt;SubscriberType>}
-     */
-    static getSubscribersByEvent(event: string): Array&lt;SubscriberType> {
-        return this.getInstance().getAllSubscribers().filter(
-            (subscriber: SubscriberType) => subscriber.event === event
-        );
-    }
 
-    /**
-     * Add handler to collection
-     * @param  {SubscriberType} subscriber
-     * @returns void
-     */
-    addSubscriber(subscriber: SubscriberType): void {
-        this._subscribers.push(subscriber);
-    }
 
-    /**
-     * Get all subscribers from collection
-     * @returns {Array&lt;SubscriberType>}
-     */
-    getAllSubscribers(): Array&lt;SubscriberType> {
-        return this._subscribers.sort(
-            (a: SubscriberType, b: SubscriberType) => Number(a.priority > b.priority)
-        );
-    }
-}
 
-export default EventEmitter;
-</code></pre>
-        </article>
-    </section>
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li>TabInterface</li>
+        
+    </ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line9">line 9</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getActive"><span class="type-signature"></span>getActive<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Get active
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>boolean</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getFields"><span class="type-signature"></span>getFields<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;string>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Get fields
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line103">line 103</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>Array.&lt;string></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getIcon"><span class="type-signature"></span>getIcon<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Get icon
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>string</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getId"><span class="type-signature"></span>getId<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Get id of tab
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line83">line 83</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>string</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="getTitle"><span class="type-signature"></span>getTitle<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Get title
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line55">line 55</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code>string</code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setActive"><span class="type-signature"></span>setActive<span class="signature">(active)</span><span class="type-signature"> &rarr; {<a href="Tab.html">Tab</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Set active
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line112">line 112</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>active</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+                <td class="default">
+                
+                    true
+                
+                </td>
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code><a href="Tab.html">Tab</a></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setFields"><span class="type-signature"></span>setFields<span class="signature">(fields)</span><span class="type-signature"> &rarr; {<a href="Tab.html">Tab</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Set fields
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line92">line 92</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fields</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>Array.&lt;string></code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code><a href="Tab.html">Tab</a></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+            
+<div class="section-method">
+
+    
+
+    <h4 class="name" id="setIcon"><span class="type-signature"></span>setIcon<span class="signature">(icon)</span><span class="type-signature"> &rarr; {<a href="Tab.html">Tab</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Set icon
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Shared_Tab_Tab.js.html">Shared/Tab/Tab.js</a>, <a href="Shared_Tab_Tab.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>icon</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><code>string</code></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                
+                
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="section-returns">
+<h5>Returns:</h5>
+
+        
+
+<dl class="param-type">
+    <dt>
+        Type:
+    </dt>
+    <dd>
+        
+<span class="param-type"><code><a href="Tab.html">Tab</a></code></span>
+
+
+    </dd>
+</dl>
+
+
+    
+</div>
+
+
+
+</div>
+        
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
@@ -149,7 +1167,7 @@ export default EventEmitter;
 <br class="clear">
 
 <footer>
-    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Sep 20 2017 23:25:37 GMT+0300 (EEST) using the Minami theme.
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Sep 20 2017 23:25:38 GMT+0300 (EEST) using the Minami theme.
 </footer>
 
 <script>prettyPrint();</script>

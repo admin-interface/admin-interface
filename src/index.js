@@ -5,6 +5,7 @@ import PageAbstract from './Shared/PageAbstract/PageAbstract';
 import WidgetAbstract from './Shared/WidgetAbstract/WidgetAbstract';
 import { WidgetFactory } from './Shared/WidgetFactory/WidgetFactory';
 import FieldFactory from './Shared/FieldFactory/FieldFactory';
+import Tab from './Shared/Tab/Tab';
 import EventEmitter from './Services/EventEmitter/EventEmitter';
 
 export default AdminInterface;
@@ -13,6 +14,7 @@ export {
     EventEmitter,
     ModelAbstract,
     Column,
+    Tab,
     PageAbstract,
     WidgetFactory,
     WidgetAbstract,

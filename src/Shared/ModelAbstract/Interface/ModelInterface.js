@@ -3,6 +3,7 @@ import { Model as SequelizeModel } from 'sequelize';
 
 import FieldFactory from '../../FieldFactory/FieldFactory';
 import Column from '../../Column/Column';
+import Tab from '../../Tab/Tab';
 
 import { type FieldType } from '../Type/FieldType';
 
@@ -13,6 +14,7 @@ export interface ModelInterface<T> {
     _key: string,
     _fields: Array<FieldType>,
     _columns: Array<Column>,
+    _tabs: Array<Tab>,
     _references: Array<string>,
 
     getModel(): SequelizeModel,
@@ -34,6 +36,10 @@ export interface ModelInterface<T> {
     setReference(reference: string): T,
 
     getReferences(): Array<string>,
+
+    setTab(tab: Tab): T,
+
+    getTabs(): Array<Tab>,
 
     isShowActions(): boolean,
 
@@ -60,6 +66,10 @@ export interface ModelInterface<T> {
     buildColumns(): void,
 
     buildColumnsFromStrategy(): void,
+
+    getTabsStrategy(): Array<Tab>,
+
+    setTabs(): void,
 
     setReferences(): void
 }

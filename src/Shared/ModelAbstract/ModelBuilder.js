@@ -49,6 +49,7 @@ class ModelBuilder {
     build(): Model {
         this._model.setFields();
         this._model.setColumns();
+        this._model.setTabs();
         this._model.setReferences();
 
         return this.getModel();

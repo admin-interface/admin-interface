@@ -5,6 +5,7 @@ import lodash from 'lodash';
 import FieldFactory from '../FieldFactory/FieldFactory';
 import Registry from '../../Services/Registry/ProxyInterface';
 import Column from '../Column/Column';
+import Tab from '../Tab/Tab';
 
 import { ModelInterface } from './Interface/ModelInterface';
 import { type FieldType } from './Type/FieldType';
@@ -31,6 +32,12 @@ class ModelAbstract implements ModelInterface<ModelAbstract> {
      * @private
      */
     _columns: Array<Column>    = [];
+    /**
+     * Tabs
+     * @type {Array<Tab>}
+     * @private
+     */
+    _tabs: Array<Tab>          = [];
     /**
      * References
      * @type {Array<string>}
@@ -122,6 +129,26 @@ class ModelAbstract implements ModelInterface<ModelAbstract> {
     }
 
     /**
+     * Set tab
+     * @param {Tab} tab
+     * @returns {ModelAbstract}
+     */
+    setTab(tab: Tab): ModelAbstract {
+        if (tab instanceof Tab) {
+            this._tabs.push(tab);
+        }
+        return this;
+    }
+
+    /**
+     * Get tabs
+     * @returns {Array<Tab>}
+     */
+    getTabs(): Array<Tab> {
+        return this._tabs;
+    }
+
+    /**
      * Set reference
      * @param {string} reference
      * @returns {ModelAbstract}
@@ -195,6 +222,14 @@ class ModelAbstract implements ModelInterface<ModelAbstract> {
      * @returns {Array<Column>}
      */
     getColumnsStrategy(): Array<Column> { // eslint-disable-line class-methods-use-this
+        return [];
+    }
+
+    /**
+     * Get strategy for tabs
+     * @returns {Array<Tab>}
+     */
+    getTabsStrategy(): Array<Tab> { // eslint-disable-line class-methods-use-this
         return [];
     }
 
@@ -298,6 +333,17 @@ class ModelAbstract implements ModelInterface<ModelAbstract> {
             return this.buildColumnsFromStrategy();
         }
         return this.buildColumns();
+    }
+
+    /**
+     * Set tabs.
+     * Protected method
+     */
+    setTabs(): void {
+        const tabs = this.getTabsStrategy();
+        if (tabs.length) {
+            tabs.forEach((tab: Tab) => this.setTab(tab));
+        }
     }
 
     /**

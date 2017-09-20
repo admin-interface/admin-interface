@@ -22,8 +22,30 @@ block content
                             - var actionUrl = Link.getLinkApiModelSingleUpdate(Model.getKey(), item[ Model.getPrimaryKey() ])
                             form(method="POST", role= Model.getKey(), action= actionUrl)
 
-                                each field in Model.getFields()
-                                    != field.type.render(item)
+                                // Render tabs
+                                if Model.getTabs().length
+                                    ul.nav.nav-tabs(role="tablist")
+                                        each Tab in Model.getTabs()
+                                            li(role="presentation", class= Tab.getActive() ? 'active' : '')
+                                                a(href= '#' + Tab.getId(), data-toggle='tab')
+                                                    if Tab.getIcon()
+                                                        i.material-icons= Tab.getIcon()
+                                                    != ' ' + Tab.getTitle()
+
+                                    .tab-content
+                                        each Tab in Model.getTabs()
+                                            div.tab-pane.fade(
+                                            role="tabpanel",
+                                            id= Tab.getId(),
+                                            class= Tab.getActive() ? 'in active' : ''
+                                            )
+                                                each fieldKey in Tab.getFields()
+                                                    - var field = Model.getFieldByKey(fieldKey)
+                                                    if field
+                                                        != field.type.render(item)
+                                else
+                                    each field in Model.getFields()
+                                        != field.type.render(item)
 
                                 if actionUrl
                                     button(type="submit").btn.btn-primary.btn-lg.m-l-15.waves-effect.right.update-model
