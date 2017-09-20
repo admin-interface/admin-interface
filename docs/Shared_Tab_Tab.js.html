@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Services/EventEmitter/EventEmitter.js - Documentation</title>
+    <title>Shared/Tab/Tab.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Services/EventEmitter/EventEmitter.js</h1>
+    <h1 class="page-title">Shared/Tab/Tab.js</h1>
     
 
     
@@ -40,103 +40,130 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// @flow
-import { type SubscriberType } from './Type/SubscriberType';
-import { type HandlerType } from './Type/HandlerType';
-import { EventEmitterInterface } from './Interface/EventEmitterInterface';
+import lodash from 'lodash';
 
-let instance = null;
+import { TabInterface } from './Interface/TabInterface';
 
 /**
- * Event Emitter class
- * @implements EventEmitterInterface
+ * Tab class
+ * @implements TabInterface
  */
-class EventEmitter implements EventEmitterInterface {
+class Tab implements TabInterface&lt;Tab> {
     /**
-     * Collection of subscribers
-     * @type {Array&lt;SubscriberType>}
+     * Fields
+     * @type {Array&lt;string>}
      * @private
      */
-    _subscribers: Array&lt;SubscriberType> = [];
+    _fields: Array&lt;string> = [];
+    /**
+     * Active tab
+     * @type {boolean}
+     * @private
+     */
+    _active: boolean       = false;
+    /**
+     * Title
+     * @type {string}
+     * @private
+     */
+    _title: string;
+    /**
+     * Icon
+     * @type {string}
+     * @private
+     */
+    _icon: string;
 
-    constructor() {
-        if (!instance) {
-            instance = this;
+    /**
+     * Set title
+     * @param {string} title
+     * @returns {Tab}
+     */
+    setTitle(title: string): Tab {
+        if (typeof title === 'string') {
+            this._title = title;
         }
-        return instance;
+        return this;
     }
 
     /**
-     * Get instance class
-     *
-     * @returns EventEmitter
+     * Get title
+     * @returns {string}
      */
-    static getInstance(): EventEmitter {
-        return new EventEmitter();
+    getTitle(): string {
+        return this._title;
     }
 
     /**
-     * Subscribe
-     * @param  {string} event - Event key
-     * @param  {HandlerType} handler - Handler of event
-     * @param  {number} priority - Priority
-     * @param  {any} context? - Handler context
-     * @returns void
+     * Set icon
+     * @param {string} icon
+     * @returns {Tab}
      */
-    static subscribe(event: string,
-                     handler: HandlerType,
-                     priority: number = 10,
-                     context?: any): void {
-        const subscriber: SubscriberType = {
-            event,
-            handler: handler.bind(context || handler),
-            priority
-        };
-        this.getInstance().addSubscriber(subscriber);
+    setIcon(icon: string): Tab {
+        if (typeof icon === 'string') {
+            this._icon = icon;
+        }
+        return this;
     }
 
     /**
-     * Emit event
-     * @param  {string} event
-     * @param  {any} args?
-     * @returns void
+     * Get icon
+     * @returns {string}
      */
-    static emit(event: string, args?: any): void {
-        this.getSubscribersByEvent(event)
-            .map(handler => handler.handler(args));
+    getIcon(): string {
+        return this._icon;
     }
 
     /**
-     * Get all subscribers by event from collection
-     * @param  {string} event
-     * @returns {Array&lt;SubscriberType>}
+     * Get id of tab
+     * @returns {string}
      */
-    static getSubscribersByEvent(event: string): Array&lt;SubscriberType> {
-        return this.getInstance().getAllSubscribers().filter(
-            (subscriber: SubscriberType) => subscriber.event === event
-        );
+    getId() {
+        return lodash.snakeCase(this.getTitle());
     }
 
     /**
-     * Add handler to collection
-     * @param  {SubscriberType} subscriber
-     * @returns void
+     * Set fields
+     * @param {Array&lt;string>} fields
+     * @returns {Tab}
      */
-    addSubscriber(subscriber: SubscriberType): void {
-        this._subscribers.push(subscriber);
+    setFields(fields: Array&lt;string>): Tab {
+        if (Array.isArray(fields)) {
+            this._fields = fields;
+        }
+        return this;
     }
 
     /**
-     * Get all subscribers from collection
-     * @returns {Array&lt;SubscriberType>}
+     * Get fields
+     * @returns {Array&lt;string>}
      */
-    getAllSubscribers(): Array&lt;SubscriberType> {
-        return this._subscribers.sort(
-            (a: SubscriberType, b: SubscriberType) => Number(a.priority > b.priority)
-        );
+    getFields(): Array&lt;string> {
+        return this._fields;
+    }
+
+    /**
+     * Set active
+     * @param active
+     * @returns {Tab}
+     */
+    setActive(active: boolean = true): Tab {
+        if (typeof active === 'boolean') {
+            this._active = active;
+        }
+        return this;
+    }
+
+    /**
+     * Get active
+     * @returns {boolean}
+     */
+    getActive(): boolean {
+        return this._active;
     }
 }
 
-export default EventEmitter;
+export default Tab;
 </code></pre>
         </article>
     </section>
