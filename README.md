@@ -2,8 +2,6 @@
 
 Admin Interface it is library for provide Admin UI on base [Sequelize](https://www.npmjs.com/package/sequelize) and [Express](https://www.npmjs.com/package/express).
 
-As a basis UI is taken [AdminBSB - Material Design](https://github.com/gurayyarar/AdminBSBMaterialDesign)
-
 Also check out our [demo project](https://github.com/admin-interface/admin-interface-demo)
 
 ### Installation
@@ -26,6 +24,13 @@ app.use('/admin', adminInterface.middleware());
 
 app.listen(3000, () => console.log('run server on 3000 port'));
 ```
+
+### Screenshots
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/assets/screenshots/screenshot-1.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/assets/screenshots/screenshot-2.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/assets/screenshots/screenshot-3.png)
+
+As a basis UI is taken [AdminBSB - Material Design](https://github.com/gurayyarar/AdminBSBMaterialDesign)
 
 ### Looking for docs?
 * [Admin Interface Documentation](https://github.com/admin-interface/admin-interface/wiki)
