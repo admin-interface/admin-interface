@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Implementation/FieldType/Reference/Reference.js - Documentation</title>
+    <title>Controller/Middleware/MiddlewareHandlerError.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Implementation/FieldType/Reference/Reference.js</h1>
+    <h1 class="page-title">Controller/Middleware/MiddlewareHandlerError.js</h1>
     
 
     
@@ -40,35 +40,64 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// @flow
-import path from 'path';
-import FieldTypeAbstract from '../../../Shared/FieldTypeAbstract/FieldTypeAbstract';
-import Registry from '../../../Services/Registry/ProxyInterface';
+import ErrorResponse from '../../Utils/ErrorResponse/ErrorResponse';
 
 /**
- * Reference FieldType
- * @extends FieldTypeAbstract
+ * Get error information
+ * @param template
+ * @param message
+ * @param defaultErrorMessage
+ * @returns {{template: *, message: null}}
  */
-class Reference extends FieldTypeAbstract {
-    static getThisPath(): string {
-        return path.join(__dirname);
-    }
-
-    /**
-     * Get context
-     * @returns {{}}
-     */
-    context(): {} {
-        const reference = this.getSequelizeField().references;
-
-        return {
-            $field: this,
-            reference,
-            ...Registry.getConfig('locals')
-        };
-    }
+function getErrorInformation(template: string, message: any, defaultErrorMessage: string): { [string]: any } {
+    return {
+        template,
+        message: process.env.NODE_ENV !== 'production' ? (message || defaultErrorMessage) : null
+    };
 }
 
-export default Reference;
+/**
+ * Middleware Handler Error
+ * @param req
+ * @param res
+ * @param next
+ * @param err
+ */
+export default function (err: ?Error | ?ErrorResponse, req: express$Request, res: express$Response, next: express$NextFunction): mixed {
+    if (err instanceof ErrorResponse) {
+        let errorInfo = {};
+        switch (err.status) {
+            case 404:
+                errorInfo = getErrorInformation('pages/error/404', err.message, 'This page doesn\'t exist');
+                break;
+            default:
+                errorInfo = getErrorInformation('pages/error/500', err.message, 'Internal Server Error');
+        }
+
+        // Set response code status
+        res.status(err.status || 500);
+
+        // Send json
+        if (err.json) {
+            return res.json(errorInfo);
+        }
+
+        // Send template
+        return res.status(err.status || 500).render(errorInfo.template, {
+            bodyClass: 'four-zero-four',
+            ...errorInfo
+        });
+    }
+
+    if (err instanceof Error) {
+        return res.status(500).render('pages/error/500', {
+            bodyClass: 'four-zero-four',
+            ...getErrorInformation('pages/error/500', err.message, 'Internal Server Error')
+        });
+    }
+
+    return next();
+}
 </code></pre>
         </article>
     </section>

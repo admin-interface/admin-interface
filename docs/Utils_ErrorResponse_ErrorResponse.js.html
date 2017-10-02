@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Implementation/FieldType/Reference/Reference.js - Documentation</title>
+    <title>Utils/ErrorResponse/ErrorResponse.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Implementation/FieldType/Reference/Reference.js</h1>
+    <h1 class="page-title">Utils/ErrorResponse/ErrorResponse.js</h1>
     
 
     
@@ -40,35 +40,37 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// @flow
-import path from 'path';
-import FieldTypeAbstract from '../../../Shared/FieldTypeAbstract/FieldTypeAbstract';
-import Registry from '../../../Services/Registry/ProxyInterface';
 
 /**
- * Reference FieldType
- * @extends FieldTypeAbstract
+ * @param message
+ * @param status
+ * @param json
+ * @constructor
  */
-class Reference extends FieldTypeAbstract {
-    static getThisPath(): string {
-        return path.join(__dirname);
-    }
+class ErrorResponse extends Error {
+    status: number = 500;
+    json: boolean  = false;
 
-    /**
-     * Get context
-     * @returns {{}}
-     */
-    context(): {} {
-        const reference = this.getSequelizeField().references;
 
-        return {
-            $field: this,
-            reference,
-            ...Registry.getConfig('locals')
-        };
+    constructor(message: any, status: number = 500, json: boolean = false) {
+        super(message);
+
+        // Capturing stack trace, excluding constructor call from it.
+        Error.captureStackTrace(this, this.constructor);
+
+        this.name = this.constructor.name;
+
+        if (typeof status === 'number') {
+            this.status = status;
+        }
+
+        if (typeof json === 'boolean') {
+            this.json = json;
+        }
     }
 }
 
-export default Reference;
+export default ErrorResponse;
 </code></pre>
         </article>
     </section>
