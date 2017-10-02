@@ -33,6 +33,12 @@ class FieldTypeAbstract implements FieldTypeInterface<FieldTypeAbstract> {
      */
     _field: string;
     /**
+     * Default value
+     * @type {*}
+     * @private
+     */
+    _defaultValue: any;
+    /**
      * Title
      * @type {string}
      * @private
@@ -136,6 +142,24 @@ class FieldTypeAbstract implements FieldTypeInterface<FieldTypeAbstract> {
      */
     getModelKey(): string {
         return this._modelKey;
+    }
+
+    /**
+     * Set default value
+     * @param {*} defaultValue
+     * @returns {FieldTypeAbstract}
+     */
+    setDefaultValue(defaultValue: any): FieldTypeAbstract {
+        this._defaultValue = defaultValue;
+        return this;
+    }
+
+    /**
+     * Get default value
+     * @returns {any}
+     */
+    getDefaultValue(): any {
+        return this._defaultValue;
     }
 
     /**
@@ -267,7 +291,7 @@ class FieldTypeAbstract implements FieldTypeInterface<FieldTypeAbstract> {
      * @returns {string}
      */
     render(itemObject?: { [string]: any }): string {
-        const value   = itemObject ? this.getValueFromObject(itemObject) : '';
+        const value   = itemObject ? this.getValueFromObject(itemObject) : this.getDefaultValue();
         const context = {
             value,
             ...this.context()

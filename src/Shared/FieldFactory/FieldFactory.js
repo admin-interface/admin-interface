@@ -75,6 +75,16 @@ class FieldFactory {
     }
 
     /**
+     * Set default value
+     * @param {*} defaultValue
+     * @returns {FieldFactory}
+     */
+    setDefaultValue(defaultValue: any): FieldFactory {
+        this.getType().setDefaultValue(defaultValue);
+        return this;
+    }
+
+    /**
      * Set FieldType by key
      * @param {string} type - FieldType key
      * @returns {FieldFactory}
