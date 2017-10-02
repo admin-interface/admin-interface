@@ -4,15 +4,15 @@ import { Router as ExpressRouter } from 'express';
 import Registry from '../Services/Registry/ProxyInterface';
 import PageAbstract from '../Shared/PageAbstract/PageAbstract';
 import MiddlewareEventEmitter from '../Controller/Middleware/MiddlewareEventEmitter';
+import MiddlewareHandlerError from '../Controller/Middleware/MiddlewareHandlerError';
 import { checkHasModel, checkHasRefModel } from '../Controller/Middleware/MiddlewareCheckHasModel';
+import { getList, getSingleModel } from '../Controller/ModelController/ModelController';
 import {
-    getList,
     getApiList,
-    getSingleModel,
-    postUpdateSingleModel,
+    putUpdateSingleModel,
     deleteSingleModel,
     postApiCreateSingleModel
-} from '../Controller/ModelController/ModelController';
+} from '../Controller/ModelController/API/APIModelController';
 
 import type { RouteType as FieldTypeRouteType } from '../Shared/FieldTypeAbstract/Type/RoutingType';
 import type { RouteType as WidgetRouteType } from '../Shared/WidgetAbstract/Type/RoutingType';
@@ -24,6 +24,7 @@ export default class Router {
         router.use(Registry.getConfig('modelPath'), this.getModelRouter());
         router.use(Registry.getConfig('apiPath'), this.getApiModelRouter());
         router.use('/', this.getPageRouter());
+        router.use(MiddlewareHandlerError);
 
         return router;
     }
@@ -44,7 +45,7 @@ export default class Router {
         apiRouter.use('/model/:model_key', ...MiddlewareEventEmitter('route:api:model:use'), checkHasModel, checkHasRefModel);
         apiRouter.get('/model/:model_key/list', ...MiddlewareEventEmitter('route:api:model:get:list'), getApiList);
         apiRouter.post('/model/:model_key/create', ...MiddlewareEventEmitter('route:api:model:post:create'), postApiCreateSingleModel);
-        apiRouter.put('/model/:model_key/single/:id/update', ...MiddlewareEventEmitter('route:api:put:get:update'), postUpdateSingleModel);
+        apiRouter.put('/model/:model_key/single/:id/update', ...MiddlewareEventEmitter('route:api:put:get:update'), putUpdateSingleModel);
         apiRouter.delete('/model/:model_key/single/:id/delete', ...MiddlewareEventEmitter('route:api:model:delete:delete'), deleteSingleModel);
 
         // field type api
