@@ -250,14 +250,14 @@ class ModelAbstract implements ModelInterface<ModelAbstract> {
 
         return Object.keys(attributes).map((key: string) => {
             const sequelizeField = attributes[ key ];
-            const field          = new FieldFactory(key, lodash.capitalize(sequelizeField.type.constructor.name))
+
+            return new FieldFactory(key, lodash.capitalize(sequelizeField.type.constructor.name))
                 .setModelKey(this.getKey())
                 .setSequelizeField(sequelizeField)
                 .setTitle(lodash.startCase(sequelizeField.fieldName))
                 .setDisable(this.getPrimaryKey() === key)
+                .setDefaultValue(sequelizeField.defaultValue || '')
                 .getField();
-
-            return field;
         });
     }
 
