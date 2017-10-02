@@ -1,0 +1,8 @@
+extends ../../base
+
+block body
+    .four-zero-four-container
+        .error-code 404
+        .error-message= message || 'This page doesn\'t exist'
+        .button-place
+            a.btn.btn-default.btn-lg.waves-effect(href= getMountPath()) GO TO HOMEPAGE

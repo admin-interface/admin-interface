@@ -21,27 +21,28 @@ html
 
 
     body(class= bodyClass || 'theme-blue')
-        block bars
-            .page-loader-wrapper
-                .loader
-                    .preloader
-                        .spinner-layer.pl-red
-                            .circle-clipper.left
-                                .circle
-                            .circle-clipper.right
-                                .circle
-                    p Please wait...
+        block body
+            block bars
+                .page-loader-wrapper
+                    .loader
+                        .preloader
+                            .spinner-layer.pl-red
+                                .circle-clipper.left
+                                    .circle
+                                .circle-clipper.right
+                                    .circle
+                        p Please wait...
 
-            .overlay
+                .overlay
 
-            include ./parts/top-bar
+                include ./parts/top-bar
 
-            section
-                include ./parts/sidebar
+                section
+                    include ./parts/sidebar
 
-        section.content
-            .container-fluid
-                block content
+            section.content
+                .container-fluid
+                    block content
 
 
         script(src= locals.getStaticFile("/components/jquery/dist/jquery.min.js"))
