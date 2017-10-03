@@ -1,0 +1,29 @@
+# Register Field Types
+
+# FieldType: Integer
+# Documentation: https://github.com/admin-interface/admin-interface/wiki/Integer-FieldType
+Integer: ./../dist/Implementation/FieldType/Integer/Integer.js
+
+# FieldType: String
+# Documentation: https://github.com/admin-interface/admin-interface/wiki/String-FieldType
+String: ./../dist/Implementation/FieldType/String/String.js
+
+# FieldType: Reference
+# Documentation: https://github.com/admin-interface/admin-interface/wiki/Reference-FieldType
+Reference: ./../dist/Implementation/FieldType/Reference/Reference.js
+
+# FieldType: Date
+# Documentation: https://github.com/admin-interface/admin-interface/wiki/Date-FieldType
+Date: ./../dist/Implementation/FieldType/Date/Date.js
+
+# FieldType: Select
+# Documentation: https://github.com/admin-interface/admin-interface/wiki/Select-FieldType
+Select: ./../dist/Implementation/FieldType/Select/Select.js
+
+# FieldType: Textarea
+# Documentation: https://github.com/admin-interface/admin-interface/wiki/Textarea-FieldType
+Textarea: ./../dist/Implementation/FieldType/Textarea/Textarea.js
+
+# FieldType: Tinymce
+# Documentation: https://github.com/admin-interface/admin-interface/wiki/Tinymce-FieldType
+Tinymce: ./../dist/Implementation/FieldType/Tinymce/Tinymce.js

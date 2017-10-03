@@ -5,6 +5,7 @@
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import yamlInclude from 'yaml-include';
 import lodash from 'lodash';
 
 /**
@@ -61,9 +62,14 @@ export function configParser(obj: any, dirname: string, type: any = {}): any {
  * @returns {{any}}
  */
 export function yamlParse(pathConfigFile: string): { [string]: any } {
-    return yaml.safeLoad(
-        fs.readFileSync(pathConfigFile, 'utf8')
-    );
+    yamlInclude.setBaseFile(pathConfigFile);
+
+    const configSrc = fs.readFileSync(pathConfigFile, 'utf8');
+
+    return yaml.load(configSrc, {
+        schema:   yamlInclude.YAML_INCLUDE_SCHEMA,
+        filename: yamlInclude.basefile
+    });
 }
 
 /**
