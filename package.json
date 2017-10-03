@@ -1,6 +1,6 @@
 {
   "name": "admin-interface",
-  "version": "1.0.0-alpha.2.3",
+  "version": "1.0.0-alpha.3",
   "description": "Library for provide Admin UI",
   "main": "index.js",
   "scripts": {
@@ -48,7 +48,8 @@
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "object-path": "^0.11.4",
-    "sequelize": "^4.4.2"
+    "sequelize": "^4.4.2",
+    "yaml-include": "^1.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

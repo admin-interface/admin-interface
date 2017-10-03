@@ -18,7 +18,7 @@ export function getList(req: express$Request, res: express$Response, next: expre
 
     if (Model) {
         try {
-            return res.render('model/list1', {
+            return res.render('model/list', {
                 Model
             });
         } catch (err) {

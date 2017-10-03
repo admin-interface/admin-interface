@@ -1,0 +1,13 @@
+# This is base configuration file
+
+# Application Config
+Config: !!inc/file config.yaml
+
+# Register Field Types
+FieldType: !!inc/file field-types.yaml
+
+# Register Widgets
+Widget: !!inc/file widgets.yaml
+
+# Register Pages
+Page: !!inc/file pages.yaml

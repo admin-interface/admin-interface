@@ -1,0 +1,5 @@
+# Register Widgets
+
+# Widget: ModelsInfoWidget
+# Documentation: In progress
+ModelsInfoWidget: ./../dist/Implementation/Widget/ModelsInfoWidget/ModelsInfoWidget.js
