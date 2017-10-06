@@ -6,7 +6,7 @@ Also check out our [demo project](https://github.com/admin-interface/admin-inter
 
 ### Installation
 ```bash
-$ npm install --save admin-interface@1.0.0-alpha.3
+$ npm install --save admin-interface@1.0.0-alpha.3.1
 ```
 
 ### Connect to Your project
