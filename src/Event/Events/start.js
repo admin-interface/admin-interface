@@ -31,5 +31,5 @@ export function startBefore(): void {
 
     Registry.getApp().use(bodyParser.urlencoded({ extended: false }));
     Registry.getApp().use(Registry.getConfig('staticPath'), express.static(path.join(__dirname, '../../../assets/static')));
-    Registry.getApp().use('/', router.getRouter());
+    Registry.getApp().use(router.getRouter());
 }

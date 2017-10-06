@@ -8,7 +8,7 @@ import ErrorResponse from '../../Utils/ErrorResponse/ErrorResponse';
  * @param defaultErrorMessage
  * @returns {{template: *, message: null}}
  */
-function getErrorInformation(template: string, message: any, defaultErrorMessage: string): { [string]: any } {
+export function getErrorInformation(template: string, message: any, defaultErrorMessage: string): { [string]: any } {
     return {
         template,
         message: process.env.NODE_ENV !== 'production' ? (message || defaultErrorMessage) : null
@@ -23,18 +23,18 @@ function getErrorInformation(template: string, message: any, defaultErrorMessage
  * @param err
  */
 export default function (err: ?Error | ?ErrorResponse, req: express$Request, res: express$Response, next: express$NextFunction): mixed {
-    if (err instanceof ErrorResponse) {
+    if (err instanceof Error) {
         let errorInfo = {};
-        switch (err.status) {
-            case 404:
-                errorInfo = getErrorInformation('pages/error/404', err.message, 'This page doesn\'t exist');
-                break;
-            default:
-                errorInfo = getErrorInformation('pages/error/500', err.message, 'Internal Server Error');
+        const status  = err.status ? Number(err.status) : null;
+
+        if (status === 404) {
+            errorInfo = getErrorInformation('pages/error/404', err.message, 'This page doesn\'t exist');
+        } else {
+            errorInfo = getErrorInformation('pages/error/500', err.message, 'Internal Server Error');
         }
 
         // Set response code status
-        res.status(err.status || 500);
+        res.status(status || 500);
 
         // Send json
         if (err.json) {
@@ -42,16 +42,9 @@ export default function (err: ?Error | ?ErrorResponse, req: express$Request, res
         }
 
         // Send template
-        return res.status(err.status || 500).render(errorInfo.template, {
+        return res.render(errorInfo.template, {
             bodyClass: 'four-zero-four',
             ...errorInfo
-        });
-    }
-
-    if (err instanceof Error) {
-        return res.status(500).render('pages/error/500', {
-            bodyClass: 'four-zero-four',
-            ...getErrorInformation('pages/error/500', err.message, 'Internal Server Error')
         });
     }
 
