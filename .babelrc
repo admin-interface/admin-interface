@@ -2,14 +2,18 @@
   "presets": [
     "flow",
     [
-      "es2015"
+      "env",
+      {
+        "targets": {
+          "node": "6.11"
+        }
+      }
     ],
     "stage-2"
   ],
   "plugins": [
     "transform-runtime",
     "add-module-exports",
-    "syntax-flow",
-    "transform-flow-strip-types"
+    "syntax-flow"
   ]
 }

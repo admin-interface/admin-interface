@@ -1,9 +1,23 @@
 {
-  "plugins": ["node_modules/jsdoc-babel"],
+  "plugins": [
+    "node_modules/jsdoc-babel"
+  ],
   "babel": {
     "babelrc": false,
-    "extensions": ["js"],
-    "presets": [["es2017"], "stage-2"],
+    "extensions": [
+      "js"
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "6.11"
+          }
+        }
+      ],
+      "stage-2"
+    ],
     "plugins": [
       "transform-flow-strip-types"
     ]
