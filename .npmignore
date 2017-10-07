@@ -4,3 +4,4 @@ flow-typed
 docs
 assets/src
 *.log
+.idea
