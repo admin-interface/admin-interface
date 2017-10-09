@@ -2,10 +2,11 @@
  * @module src/Utils/View/LinkType/MenuView
  * @flow
  */
+import type { ContextType } from 'admin-interface-core/src/Registry/Type/MenuType';
+
 import { getLinkModelList } from './ModelView';
 import { getLinkPage } from './PageView';
 
-import type { ContextType } from '../../../Services/Registry/Type/MenuType';
 
 /**
  * Get url to list from context menu item

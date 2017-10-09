@@ -2,8 +2,8 @@
  * @module src/Utils/View/LinkType/ModelView
  * @flow
  */
+import { Registry } from 'admin-interface-core';
 
-import Registry from '../../../Services/Registry/ProxyInterface';
 import { getMountPath } from '../../Mount/Mount';
 
 /**
@@ -13,9 +13,9 @@ import { getMountPath } from '../../Mount/Mount';
  * @returns {string}
  */
 export function getLinkApiFieldType(fieldKey: string, routeKey: string): string {
-    const routing = Registry.getFieldType(fieldKey).getRouting();
+    const routing = Registry.getRepository('FieldType').get(fieldKey).getRouting();
     if (routing) {
-        return `${ getMountPath() + Registry.getConfig('apiPath') + Registry.getConfig('fieldPath') }/${ fieldKey + routing[ routeKey ].route }`;
+        return `${ getMountPath() + Registry.getRepository('Config').get('apiPath') + Registry.getRepository('Config').get('fieldPath') }/${ fieldKey + routing[ routeKey ].route }`;
     }
     return '';
 }

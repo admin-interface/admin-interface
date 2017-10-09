@@ -2,8 +2,8 @@
  * @module src/Utils/View/LinkType/ModelView
  * @flow
  */
+import { Registry } from 'admin-interface-core';
 
-import Registry from '../../../Services/Registry/ProxyInterface';
 import { getMountPath } from '../../Mount/Mount';
 
 /**
@@ -12,7 +12,7 @@ import { getMountPath } from '../../Mount/Mount';
  * @returns {string}
  */
 export function getLinkModelList(modelKey: string): string {
-    return `${ getMountPath() + Registry.getConfig('modelPath') }/${ modelKey }/list`;
+    return `${ getMountPath() + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/list`;
 }
 
 /**
@@ -22,5 +22,5 @@ export function getLinkModelList(modelKey: string): string {
  * @returns {string}
  */
 export function getLinkModelSingle(modelKey: string, single: string): string {
-    return `${ getMountPath() + Registry.getConfig('modelPath') }/${ modelKey }/single/${ single }/view`;
+    return `${ getMountPath() + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/single/${ single }/view`;
 }

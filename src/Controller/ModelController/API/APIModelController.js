@@ -3,14 +3,11 @@
  * @flow
  */
 import lodash from 'lodash';
+import { Registry, Column, Utils } from 'admin-interface-core';
 
-import Registry from '../../../Services/Registry/ProxyInterface';
-import Column from '../../../Shared/Column/Column';
 import ErrorResponse from '../../../Utils/ErrorResponse/ErrorResponse';
-import { formatOrder, formatQueryModelList, getReferenceWhere } from '../../../Utils/Sequelize/Query';
 import { getLinkModelSingle, getLinkModelList } from '../../../Utils/View/LinkType/ModelView';
 import { getLinkApiModelDelete } from '../../../Utils/View/LinkType/ModelAPI';
-
 
 /**
  * Get list item
@@ -24,7 +21,7 @@ import { getLinkApiModelDelete } from '../../../Utils/View/LinkType/ModelAPI';
 export async function getApiList(req: express$Request, res: express$Response, next: express$NextFunction) {
     const modelKey: string = req.params.model_key;
 
-    const Model = Registry.getModel(modelKey);
+    const Model = Registry.getRepository('Model').get(modelKey);
     if (Model) {
         const Columns: Array<Column> = Model.getColumns();
 
@@ -41,7 +38,7 @@ export async function getApiList(req: express$Request, res: express$Response, ne
             value: refModelKey
         };
         if (refModel) {
-            const refModelObject = Registry.getModel(refModel);
+            const refModelObject = Registry.getRepository('Model').get(refModel);
             if (refModelObject) {
                 byReference.table = refModelObject.getModel().tableName;
             }
@@ -54,7 +51,7 @@ export async function getApiList(req: express$Request, res: express$Response, ne
 
         // Order params
         const orderBy: DataTableOrderType = dataTableOrder[ 0 ];
-        const order: Array<Array<any>>    = formatOrder(
+        const order: Array<Array<any>>    = Utils.formatOrder(
             Columns[ orderBy.column ],
             orderBy.dir.toLocaleUpperCase()
         );
@@ -67,10 +64,10 @@ export async function getApiList(req: express$Request, res: express$Response, ne
 
         try {
             // Reference where
-            const whereByReference  = getReferenceWhere(Model, byReference);
+            const whereByReference  = Utils.getReferenceWhere(Model, byReference);
             // Get items
             const { rows, count }   = await Model.getModel().findAndCountAll(
-                formatQueryModelList(Model, order, query, search, whereByReference)
+                Utils.formatQueryModelList(Model, order, query, search, whereByReference)
             );
             // Records total
             const recordsTotal      = await Model.getModel().count(whereByReference ? {
@@ -130,7 +127,7 @@ export async function putUpdateSingleModel(req: express$Request, res: express$Re
     const modelKey: string           = req.params.model_key;
     const itemId: string             = req.params.id;
     const body: { [string]: string } = req.body;
-    const Model                      = Registry.getModel(modelKey);
+    const Model                      = Registry.getRepository('Model').get(modelKey);
 
     if (Model) {
         // Filter body
@@ -173,7 +170,7 @@ export async function putUpdateSingleModel(req: express$Request, res: express$Re
 export async function deleteSingleModel(req: express$Request, res: express$Response, next: express$NextFunction) {
     const modelKey: string = req.params.model_key;
     const itemId: string   = req.params.id;
-    const Model            = Registry.getModel(modelKey);
+    const Model            = Registry.getRepository('Model').get(modelKey);
 
     if (Model) {
         try {
@@ -214,7 +211,7 @@ export async function deleteSingleModel(req: express$Request, res: express$Respo
 export async function postApiCreateSingleModel(req: express$Request, res: express$Response, next: express$NextFunction) {
     const modelKey: string = req.params.model_key;
     const body             = req.body;
-    const Model            = Registry.getModel(modelKey);
+    const Model            = Registry.getRepository('Model').get(modelKey);
 
     if (Model) {
         const primaryKey = Model.getPrimaryKey();

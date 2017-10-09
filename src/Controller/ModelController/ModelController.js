@@ -2,7 +2,8 @@
  * @module src/Controller/ModelController/ModelController
  * @flow
  */
-import Registry from '../../Services/Registry/ProxyInterface';
+import { Registry } from 'admin-interface-core';
+
 import ErrorResponse from '../../Utils/ErrorResponse/ErrorResponse';
 
 /**
@@ -14,7 +15,7 @@ import ErrorResponse from '../../Utils/ErrorResponse/ErrorResponse';
  */
 export function getList(req: express$Request, res: express$Response, next: express$NextFunction) {
     const modelKey: string = req.params.model_key;
-    const Model            = Registry.getModel(modelKey);
+    const Model            = Registry.getRepository('Model').get(modelKey);
 
     if (Model) {
         try {
@@ -40,11 +41,11 @@ export function getList(req: express$Request, res: express$Response, next: expre
 export async function getSingleModel(req: express$Request, res: express$Response, next: express$NextFunction) {
     const modelKey = req.params.model_key;
     const itemId   = req.params.id;
-    const Model    = Registry.getModel(modelKey);
+    const Model    = Registry.getRepository('Model').get(modelKey);
 
     if (Model) {
         const References = Model.getReferences()
-            .map((reference: string) => Registry.getModel(reference));
+            .map((reference: string) => Registry.getRepository('Model').get(reference));
 
         try {
             const item = await Model.getModel().findById(itemId);

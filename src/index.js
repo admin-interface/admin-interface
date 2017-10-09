@@ -1,22 +1,35 @@
-import AdminInterface from './Shared/AdminInterface/AdminInterface';
-import ModelAbstract from './Shared/ModelAbstract/ModelAbstract';
-import Column from './Shared/Column/Column';
-import PageAbstract from './Shared/PageAbstract/PageAbstract';
-import WidgetAbstract from './Shared/WidgetAbstract/WidgetAbstract';
-import { WidgetFactory } from './Shared/WidgetFactory/WidgetFactory';
-import FieldFactory from './Shared/FieldFactory/FieldFactory';
-import Tab from './Shared/Tab/Tab';
-import EventEmitter from './Services/EventEmitter/EventEmitter';
+import {
+    Column,
+    EventEmitter,
+    Filter,
+    FieldFactory,
+    FieldTypeAbstract,
+    ModelAbstract,
+    ModelBuilder,
+    PageAbstract,
+    Registry,
+    Tab,
+    WidgetAbstract,
+    WidgetFactory,
+    Utils
+} from 'admin-interface-core';
+
+import AdminInterface from './AdminInterface/AdminInterface';
 
 export default AdminInterface;
 export {
     AdminInterface,
-    EventEmitter,
-    ModelAbstract,
     Column,
-    Tab,
+    EventEmitter,
+    Filter,
+    FieldFactory,
+    FieldTypeAbstract,
+    ModelAbstract,
+    ModelBuilder,
     PageAbstract,
-    WidgetFactory,
+    Registry,
+    Tab,
     WidgetAbstract,
-    FieldFactory
+    WidgetFactory,
+    Utils
 };

@@ -1,5 +1,6 @@
 // @flow
-import EventEmitter from '../Services/EventEmitter/EventEmitter';
+import { EventEmitter } from 'admin-interface-core';
+
 import { setConfigEvent } from './Events/set-config';
 import { startAfter, startBefore, startEvent } from './Events/start';
 

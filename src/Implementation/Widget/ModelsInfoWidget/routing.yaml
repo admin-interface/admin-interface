@@ -1,4 +1,0 @@
-getModelsInfo:
-    route: /get_models_info
-    controller: ./API.js
-    action: getModelsInfo
