@@ -1,5 +1,5 @@
 // @flow
-import EventEmitter from '../../Services/EventEmitter/EventEmitter';
+import { EventEmitter } from 'admin-interface-core';
 
 export default function MiddlewareEventEmitter(eventName: string): Array<() => void> {
     return EventEmitter.getSubscribersByEvent(eventName)

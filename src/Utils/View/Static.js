@@ -2,7 +2,8 @@
  * @module src/Utils/Sequelize/Query
  * @flow
  */
-import Registry from '../../Services/Registry/ProxyInterface';
+import { Registry } from 'admin-interface-core';
+
 import { getMountPath } from '../Mount/Mount';
 
 /**
@@ -11,5 +12,5 @@ import { getMountPath } from '../Mount/Mount';
  * @returns {string}
  */
 export function getStaticFile(filePath: string = ''): string {
-    return getMountPath() + Registry.getConfig('staticPath') + filePath;
+    return getMountPath() + Registry.getRepository('Config').get('staticPath') + filePath;
 }

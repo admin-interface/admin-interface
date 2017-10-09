@@ -4,7 +4,7 @@ views: []
 # Default context
 locals:
     # Base jade dir
-    basedir: ./../views
+    # basedir: ./../views
 
     # Branding
     branding:

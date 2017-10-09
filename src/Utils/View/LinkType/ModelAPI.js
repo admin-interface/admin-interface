@@ -2,9 +2,8 @@
  * @module src/Utils/View/LinkType/ModelAPI
  * @flow
  */
+import { Registry, Filter } from 'admin-interface-core';
 
-import Registry from '../../../Services/Registry/ProxyInterface';
-import Filter from '../../../Services/Filter/Filter';
 import { getMountPath } from '../../Mount/Mount';
 
 /**
@@ -15,7 +14,7 @@ import { getMountPath } from '../../Mount/Mount';
  * @returns {string}
  */
 export function getLinkApiModelList(modelKey: string, refModelKey?: string, refModelValue?: string): string {
-    let url = `${ getMountPath() + Registry.getConfig('apiPath') + Registry.getConfig('modelPath') }/${ modelKey }/list`;
+    let url = `${ getMountPath() + Registry.getRepository('Config').get('apiPath') + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/list`;
     if (refModelKey && refModelValue) {
         url += `?refModel=${ refModelKey }&refModelKey=${ refModelValue }`;
     }
@@ -29,7 +28,7 @@ export function getLinkApiModelList(modelKey: string, refModelKey?: string, refM
  * @returns {string}
  */
 export function getLinkApiModelDelete(modelKey: string, single: string): string {
-    return `${ getMountPath() + Registry.getConfig('apiPath') + Registry.getConfig('modelPath') }/${ modelKey }/single/${ single }/delete`;
+    return `${ getMountPath() + Registry.getRepository('Config').get('apiPath') + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/single/${ single }/delete`;
 }
 
 /**
@@ -38,7 +37,7 @@ export function getLinkApiModelDelete(modelKey: string, single: string): string 
  * @returns {string}
  */
 export function getLinkApiModelCreate(modelKey: string): string {
-    return `${ getMountPath() + Registry.getConfig('apiPath') + Registry.getConfig('modelPath') }/${ modelKey }/create`;
+    return `${ getMountPath() + Registry.getRepository('Config').get('apiPath') + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/create`;
 }
 
 /**
@@ -48,6 +47,6 @@ export function getLinkApiModelCreate(modelKey: string): string {
  * @returns {string}
  */
 export function getLinkApiModelSingleUpdate(modelKey: string, single: string): string {
-    const url = `${ getMountPath() + Registry.getConfig('apiPath') + Registry.getConfig('modelPath') }/${ modelKey }/single/${ single }/update`;
+    const url = `${ getMountPath() + Registry.getRepository('Config').get('apiPath') + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/single/${ single }/update`;
     return Filter.applyFilter('fun:getLinkApiModelSingleUpdate:return', url);
 }

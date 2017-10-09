@@ -2,12 +2,12 @@
  * @module src/Utils/Mount/Mount
  * @flow
  */
-import Registry from '../../Services/Registry/ProxyInterface';
+import { Registry } from 'admin-interface-core';
 
 /**
  * Get mount path
  * @returns {string}
  */
 export function getMountPath(): string {
-    return Registry.getApp().mountpath;
+    return Registry.getRepository('App').get('instance').mountpath;
 }

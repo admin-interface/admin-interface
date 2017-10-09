@@ -1,20 +1,16 @@
 {
   "name": "admin-interface",
-  "version": "1.0.0-alpha.3.2",
+  "version": "1.0.0-alpha.5.1",
   "description": "Library for provide Admin UI",
   "main": "index.js",
   "scripts": {
-    "watch": "concurrently --kill-others \"npm run watch-backend\" \"npm run watch-frontend\"",
-    "watch-backend": "rimraf ./dist && babel --watch src/ -d dist/ --copy-files",
-    "watch-frontend": "gulp watch",
-    "build-backend": "rimraf ./dist && babel src/ -d dist/ --copy-files",
-    "build-frontend": "gulp sass",
-    "bower-install": "bower install --force",
+    "watch": "rimraf ./dist && babel --watch src/ -d dist/ --copy-files",
+    "build": "rimraf ./dist && babel src/ -d dist/ --copy-files",
     "lint": "eslint .",
     "flow-status": "flow status",
     "check-error": "npm run lint && npm run flow-status",
     "jsdoc": "jsdoc -c ./jsdoc.conf.json -r ./src",
-    "prepublishOnly": "npm run check-error && npm run build-frontend && npm run build-backend && npm run bower-install",
+    "prepublishOnly": "npm run check-error && npm run build",
     "test": "mocha test --recursive --compilers js:babel-core/register"
   },
   "repository": "git+https://github.com/admin-interface/admin-interface.git",
@@ -39,17 +35,14 @@
     "forms"
   ],
   "dependencies": {
-    "async-file": "^2.0.2",
-    "babel-runtime": "^6.26.0",
+    "admin-interface-core": "1.0.0-alpha.1",
+    "admin-interface-addons": "1.0.0-alpha.1",
+    "admin-interface-front": "1.0.0-alpha.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jade": "^1.11.0",
-    "js-yaml": "^3.9.0",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
-    "object-path": "^0.11.4",
-    "sequelize": "^4.4.2",
-    "yaml-include": "^1.2.0"
+    "babel-runtime": "^6.26.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -75,13 +68,10 @@
     "eslint-plugin-mocha": "^4.11.0",
     "flow-bin": "^0.52.0",
     "flow-remove-types": "^1.2.1",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0",
     "jsdoc": "^3.5.4",
     "jsdoc-babel": "^0.3.0",
     "minami": "^1.2.3",
     "mocha": "^3.5.0",
-    "postcss-smart-import": "^0.7.5",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.1",
     "source-map-support": "^0.4.16"

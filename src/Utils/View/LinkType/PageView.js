@@ -2,8 +2,8 @@
  * src/Utils/View/LinkType/PageView
  * @flow
  */
+import { Registry } from 'admin-interface-core';
 
-import Registry from '../../../Services/Registry/ProxyInterface';
 import { getMountPath } from '../../Mount/Mount';
 
 /**
@@ -12,7 +12,7 @@ import { getMountPath } from '../../Mount/Mount';
  * @returns {string}
  */
 export function getLinkPage(key: string): string {
-    const page = Registry.getPage(key);
+    const page = Registry.getRepository('Page').get(key);
     if (page) {
         return getMountPath() + page.getUrl();
     }

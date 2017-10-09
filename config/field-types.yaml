@@ -2,28 +2,28 @@
 
 # FieldType: Integer
 # Documentation: https://github.com/admin-interface/admin-interface/wiki/Integer-FieldType
-Integer: ./../dist/Implementation/FieldType/Integer/Integer.js
+Integer: ./../../admin-interface-addons/dist/FieldType/Integer/Integer.js
 
 # FieldType: String
 # Documentation: https://github.com/admin-interface/admin-interface/wiki/String-FieldType
-String: ./../dist/Implementation/FieldType/String/String.js
+String: ./../../admin-interface-addons/dist/FieldType/String/String.js
 
 # FieldType: Reference
 # Documentation: https://github.com/admin-interface/admin-interface/wiki/Reference-FieldType
-Reference: ./../dist/Implementation/FieldType/Reference/Reference.js
+Reference: ./../../admin-interface-addons/dist/FieldType/Reference/Reference.js
 
 # FieldType: Date
 # Documentation: https://github.com/admin-interface/admin-interface/wiki/Date-FieldType
-Date: ./../dist/Implementation/FieldType/Date/Date.js
+Date: ./../../admin-interface-addons/dist/FieldType/Date/Date.js
 
 # FieldType: Select
 # Documentation: https://github.com/admin-interface/admin-interface/wiki/Select-FieldType
-Select: ./../dist/Implementation/FieldType/Select/Select.js
+Select: ./../../admin-interface-addons/dist/FieldType/Select/Select.js
 
 # FieldType: Textarea
 # Documentation: https://github.com/admin-interface/admin-interface/wiki/Textarea-FieldType
-Textarea: ./../dist/Implementation/FieldType/Textarea/Textarea.js
+Textarea: ./../../admin-interface-addons/dist/FieldType/Textarea/Textarea.js
 
 # FieldType: Tinymce
 # Documentation: https://github.com/admin-interface/admin-interface/wiki/Tinymce-FieldType
-Tinymce: ./../dist/Implementation/FieldType/Tinymce/Tinymce.js
+Tinymce: ./../../admin-interface-addons/dist/FieldType/Tinymce/Tinymce.js
