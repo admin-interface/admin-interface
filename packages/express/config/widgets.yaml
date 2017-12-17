@@ -1,0 +1,5 @@
+# Register Widgets
+
+# Widget: ModelsInfoWidget
+# Documentation: In progress
+ModelsInfoWidget: "@admin-interface/addons/dist/Widget/ModelsInfoWidget/ModelsInfoWidget.js"

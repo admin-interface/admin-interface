@@ -1,0 +1,30 @@
+[
+  {
+    "model": "Category",
+    "data": {
+      "id": 1,
+      "title": "Travel"
+    }
+  },
+  {
+    "model": "Category",
+    "data": {
+      "id": 2,
+      "title": "NodeJS"
+    }
+  },
+  {
+    "model": "Category",
+    "data": {
+      "id": 3,
+      "title": "Back-end"
+    }
+  },
+  {
+    "model": "Category",
+    "data": {
+      "id": 4,
+      "title": "Front-end"
+    }
+  }
+]

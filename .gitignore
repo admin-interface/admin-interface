@@ -1,7 +1,6 @@
 node_modules
 dist
 lib
-assets/static/components
 npm-debug.*
 .DS_Store
 .idea

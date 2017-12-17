@@ -1,0 +1,28 @@
+{
+  "name": "@admin-interface/demo",
+  "version": "0.0.8",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "fixtures": "node fixtures.js",
+    "ai": "AI_CONFIG_FILE=./admin-interface.yaml ai"
+  },
+  "author": "kuzmenko1256",
+  "license": "MIT",
+  "dependencies": {
+    "@admin-interface/express": "^0.0.8",
+    "express": "^4.16.2",
+    "sequelize": "4.1.0",
+    "sqlite3": "^3.1.13"
+  },
+  "devDependencies": {
+    "@admin-interface/addons": "^0.0.8",
+    "@admin-interface/core": "^0.0.8",
+    "@admin-interface/front": "^0.0.8",
+    "nodemon": "^1.13.3",
+    "sequelize-fixtures": "^0.6.0"
+  }
+}

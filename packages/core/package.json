@@ -1,0 +1,24 @@
+{
+  "name": "@admin-interface/core",
+  "version": "0.0.8",
+  "description": "",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/admin-interface/admin-interface.git"
+  },
+  "author": "kuzmenko1256",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/admin-interface/admin-interface/issues"
+  },
+  "homepage": "https://github.com/admin-interface/admin-interface#readme",
+  "dependencies": {
+    "jade": "^1.11.0",
+    "js-yaml": "^3.10.0",
+    "lodash": "^4.17.4",
+    "object-path": "^0.11.4",
+    "sequelize": "^4.13.6",
+    "yaml-include": "^1.2.0"
+  }
+}

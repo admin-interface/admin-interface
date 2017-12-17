@@ -1,0 +1,61 @@
+extends ../base
+
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    h2= Model.getNameSingular()
+
+                    ul.header-dropdown.m-r--5
+                        li.dropdown
+                            a.dropdown-toggle(href='javascript:void(0);', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                                i.material-icons more_vert
+                            ul.dropdown-menu.pull-right
+                                li
+                                    a.create-single-model(href="#", data-action="create", data-modal-key= Model.getKey()) Create
+                                    a.delete-single-model(href="#", data-action="delete", data-api-url= Link.getLinkApiModelDelete(Model.getKey(), item[ Model.getPrimaryKey() ])) Delete
+
+                .body
+                    .row.clearfix
+                        .col-sm-12
+                            - var actionUrl = Link.getLinkApiModelSingleUpdate(Model.getKey(), item[ Model.getPrimaryKey() ])
+                            form(method="POST", role= Model.getKey(), action= actionUrl)
+
+                                // Render tabs
+                                if Model.getTabs().length
+                                    ul.nav.nav-tabs(role="tablist")
+                                        each Tab in Model.getTabs()
+                                            li(role="presentation", class= Tab.getActive() ? 'active' : '')
+                                                a(href= '#' + Tab.getId(), data-toggle='tab')
+                                                    if Tab.getIcon()
+                                                        i.material-icons= Tab.getIcon()
+                                                    != ' ' + Tab.getTitle()
+
+                                    .tab-content
+                                        each Tab in Model.getTabs()
+                                            div.tab-pane.fade(
+                                            role="tabpanel",
+                                            id= Tab.getId(),
+                                            class= Tab.getActive() ? 'in active' : ''
+                                            )
+                                                each fieldKey in Tab.getFields()
+                                                    - var field = Model.getFieldByKey(fieldKey)
+                                                    if field
+                                                        != field.type.render(item)
+                                else
+                                    each field in Model.getFields()
+                                        != field.type.render(item)
+
+                                if actionUrl
+                                    button(type="submit").btn.btn-primary.btn-lg.m-l-15.waves-effect.right.update-model
+                                        | Update
+
+
+            include ../parts/create-modal
+    //
+    //- render references blocks
+    if References.length
+        - var parentModel = Model
+        each Model in References
+            include ../parts/list-card

@@ -1,0 +1,33 @@
+.create-modal.modal.fade(tabindex='-1', role='dialog', data-modal-key= Model.getKey())
+    .modal-dialog.modal-lg(role='document')
+        .modal-content
+            form(method="POST", action= Link.getLinkApiModelCreate(Model.getKey()))
+                .modal-header
+                    h4.modal-title Create a new #{ Model.getNameSingular() }
+                .modal-body
+                    if Model.getTabs().length
+                        ul.nav.nav-tabs(role="tablist")
+                            each Tab in Model.getTabs()
+                                li(role="presentation", class= Tab.getActive() ? 'active' : '')
+                                    a(href= '#new_' + Tab.getId(), data-toggle='tab')
+                                        if Tab.getIcon()
+                                            i.material-icons= Tab.getIcon()
+                                        != ' ' + Tab.getTitle()
+
+                        .tab-content
+                            each Tab in Model.getTabs()
+                                div.tab-pane.fade(
+                                role="tabpanel",
+                                id= 'new_' + Tab.getId(),
+                                class= Tab.getActive() ? 'in active' : ''
+                                )
+                                    each fieldKey in Tab.getFields()
+                                        - var field = Model.getFieldByKey(fieldKey)
+                                        if field
+                                            != field.type.render()
+                    else
+                        each field in Model.getFields()
+                            != field.type.render()
+                .modal-footer
+                    button.btn.btn-link.waves-effect(type='submit') CREATE
+                    button.btn.btn-link.waves-effect(type='button', data-dismiss='modal') CLOSE
