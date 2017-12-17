@@ -2,17 +2,17 @@
 
 Admin Interface it is library for provide Admin UI on base [Sequelize](https://www.npmjs.com/package/sequelize) and [Express](https://www.npmjs.com/package/express).
 
-Also check out our [demo project](https://github.com/admin-interface/admin-interface-demo)
+Also check out our [demo project](https://github.com/admin-interface/admin-interface/tree/master/packages/demo)
 
 ### Installation
 ```bash
-$ npm install --save admin-interface@1.0.0-alpha.5.1
+$ npm install --save @admin-interface/express@next
 ```
 
 ### Connect to Your project
 ```javascript
-const app = require('express')();
-const AdminInterface = require('admin-interface').AdminInterface;
+const app               = require('express')();
+const AdminInterface    = require('@admin-interface/express').AdminInterface;
 
 const adminInterface = new AdminInterface();
 adminInterface.setConfigFile(__dirname, 'admin-interface.yaml');
@@ -26,9 +26,9 @@ app.listen(3000, () => console.log('run server on 3000 port'));
 ```
 
 ### Screenshots
-![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/assets/screenshots/screenshot-1.png)
-![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/assets/screenshots/screenshot-2.png)
-![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/assets/screenshots/screenshot-3.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/static/screenshots/screenshot-1.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/static/screenshots/screenshot-2.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/static/screenshots/screenshot-3.png)
 
 As a basis UI is taken [AdminBSB - Material Design](https://github.com/gurayyarar/AdminBSBMaterialDesign)
 

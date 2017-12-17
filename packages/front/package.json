@@ -1,0 +1,12 @@
+{
+  "name": "@admin-interface/front",
+  "version": "0.0.8",
+  "description": "",
+  "main": "./dist/index.js",
+  "author": "kuzmenko1256",
+  "license": "MIT",
+  "scripts": {},
+  "devDependencies": {
+    "bower": "^1.8.2"
+  }
+}

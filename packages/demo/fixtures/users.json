@@ -1,0 +1,29 @@
+[
+  {
+    "model": "User",
+    "data": {
+      "id": 1,
+      "login": "admin",
+      "email": "admin@ai-example.com",
+      "role": "Administration"
+    }
+  },
+  {
+    "model": "User",
+    "data": {
+      "id": 2,
+      "login": "author95",
+      "email": "author95@ai-example.com",
+      "role": "Author"
+    }
+  },
+  {
+    "model": "User",
+    "data": {
+      "id": 3,
+      "login": "moder",
+      "email": "moder@ai-example.com",
+      "role": "Moderator"
+    }
+  }
+]

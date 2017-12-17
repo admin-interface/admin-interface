@@ -1,0 +1,68 @@
+.row.clearfix
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        div(
+        data-model= Model.getNameSingular(),
+        data-ajax-url= parentModel ?
+            Link.getLinkApiModelList(Model.getKey(), parentModel.getKey(), item[ parentModel.getPrimaryKey() ]) :
+            Link.getLinkApiModelList(Model.getKey())
+        ).card.parts-list-card
+            .header
+                h2= parentModel ? Model.getNamePlural() + ' by ' + parentModel.getNameSingular() : Model.getNamePlural()
+
+                ul.header-dropdown.m-r--5
+                    li.dropdown
+                        a.dropdown-toggle(href='javascript:void(0);', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                            i.material-icons more_vert
+                        ul.dropdown-menu.pull-right
+                            li
+                                a.create-single-model(href="#", data-action="create", data-modal-key= Model.getKey()) Create
+
+            .body
+                table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                    thead
+                        tr
+                            each column in Model.getColumns()
+                                th(data-field-id= column.getField(), class= column.getSorting() ? '' : 'no-sort')
+                                    = column.getTitle()
+
+                            // Actions
+                            if Model.isShowActions()
+                                th.actions Actions
+                    thead.head-search-field
+                        tr
+                            - var i = 0
+                            each column in Model.getColumns()
+                                th(data-column-id= i++, class= column.getSorting() ? '' : 'no-sort')
+                                    input.head-search-field-input(disabled= !column.getSorting())
+                            if Model.isShowActions()
+                                th.actions
+
+            //- Modal window for delete
+            //.delete-modal.modal.fade(tabindex='-1', role='dialog')
+            //    .modal-dialog(role='document')
+            //        .modal-content
+            //            .modal-header
+            //                h4.modal-title Delete entry
+            //            .modal-body Do you really want to delete this entry?
+            //            .modal-footer
+            //                button.btn.btn-link.waves-effect(type='button', data-role="delete") DELETE
+            //                button.btn.btn-link.waves-effect(type='button', data-dismiss='modal') CLOSE
+
+            //- Modal window for create
+            //.create-modal.modal.fade(tabindex='-1', role='dialog')
+                .modal-dialog.modal-lg(role='document')
+                    .modal-content
+                        form(method="POST", action= model.getRouteList(true))
+                            .modal-header
+                                h4.modal-title Create entry
+                            .modal-body
+
+                                //- Render the model fields
+                                each field in model.getFields()
+                                    != field.type.render(field, null, currentUrl)
+
+                            .modal-footer
+                                button.btn.btn-link.waves-effect(type='submit') CREATE
+                                button.btn.btn-link.waves-effect(type='button', data-dismiss='modal') CLOSE
+
+        include create-modal

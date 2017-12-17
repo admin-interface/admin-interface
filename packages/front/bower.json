@@ -1,0 +1,64 @@
+{
+    "name": "admin-interface-front",
+    "description": "",
+    "main": "index.js",
+    "authors": [
+      "kuzmenko1256"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "test",
+      "tests"
+    ],
+    "dependencies": {
+      "jquery": "^3.2.1",
+      "ajax-bootstrap-select": "^1.4.1",
+      "animate.css": "animate-css#^3.5.2",
+      "autosize": "^4.0.0",
+      "bootstrap": "^3.3.7",
+      "bootstrap-colorpicker": "^2.5.1",
+      "bootstrap-material-datetimepicker": "^2.7.1",
+      "bootstrap-notify": "^0.2.0",
+      "bootstrap-select": "^1.12.4",
+      "bootstrap-tagsinput": "^0.8.0",
+      "chart.js": "chartjs#^2.6.0",
+      "chosen": "^1.8.0",
+      "ckeditor": "^4.7.2",
+      "dropzone": "^5.1.1",
+      "editable-table": "*",
+      "flot-charts": "*",
+      "font-awesome": "^4.7.0",
+      "gmaps": "^0.4.25",
+      "jquery.cookie": "jquery-cookie#^1.4.1",
+      "jquery-countTo": "countto#^1.2.0",
+      "datatables": "datatable#^1.10.16",
+      "inputmask": "^3.3.8",
+      "jquery-knob": "^1.2.13",
+      "jquery-slimscroll": "^1.3.8",
+      "jquery-sparkline": "^2.1.3",
+      "jquery.spinner": "jquery-spinner#^0.2.1",
+      "jquery.steps": "jquery-steps#^1.1.0",
+      "jquery-validation": "^1.17.0",
+      "jvectormap": "^2.0.4",
+      "light-gallery": "^1.0.0",
+      "material-design-iconic-font": "^2.2.0",
+      "materialize": "0.97.7",
+      "moment": "momentjs#^2.18.1",
+      "morris.js": "morrisjs#^0.5.1",
+      "multiselect": "multi-select#^0.9.12",
+      "nestable": "*",
+      "Waves": "waves#^0.7.5",
+      "nouislider": "^10.1.0",
+      "raphael": "^2.2.7",
+      "sweetalert": "^1.1.3",
+      "tinymce": "^4.6.7"
+    },
+    "resolutions": {
+      "jquery": ">= 2.1.0"
+    }
+  }
+  

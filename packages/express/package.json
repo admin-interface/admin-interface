@@ -1,0 +1,35 @@
+{
+  "name": "@admin-interface/express",
+  "version": "0.0.8",
+  "description": "Library for provide Admin UI",
+  "main": "./dist/index.js",
+  "repository": "git+https://github.com/admin-interface/admin-interface.git",
+  "author": "kuzmenko1256",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/admin-interface/admin-interface/issues"
+  },
+  "homepage": "https://github.com/admin-interface/admin-interface#readme",
+  "keywords": [
+    "admin-panel",
+    "express",
+    "sequelize",
+    "admin",
+    "web",
+    "app",
+    "site",
+    "website",
+    "forms"
+  ],
+  "dependencies": {
+    "@admin-interface/addons": "^0.0.8",
+    "@admin-interface/core": "^0.0.8",
+    "@admin-interface/front": "^0.0.8",
+    "babel-runtime": "^6.26.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "find-root": "^1.1.0",
+    "jade": "^1.11.0",
+    "lodash": "^4.17.4"
+  }
+}

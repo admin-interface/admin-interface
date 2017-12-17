@@ -1,7 +1,7 @@
-src
 test
 flow-typed
 docs
 assets/src
 *.log
 .idea
+lerna-debug.log

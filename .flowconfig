@@ -4,7 +4,7 @@
 ./docs
 
 [include]
-./src
+./packages
 
 [libs]
 

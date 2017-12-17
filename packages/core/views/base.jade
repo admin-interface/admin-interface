@@ -1,0 +1,71 @@
+doctype html
+html
+    head
+        title= title
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+
+        link(href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext", rel="stylesheet")
+        link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel="stylesheet")
+        link(href= locals.getStaticFile('/components/bootstrap/dist/css/bootstrap.css'), rel="stylesheet")
+        link(href= locals.getStaticFile("/components/ajax-bootstrap-select/dist/css/ajax-bootstrap-select.min.css"), rel="stylesheet")
+        link(href= locals.getStaticFile("/components/Waves/dist/waves.min.css"), rel="stylesheet")
+        link(href= locals.getStaticFile("/components/animate.css/animate.min.css"), rel="stylesheet")
+        link(href= locals.getStaticFile("/components/bootstrap-select/dist/css/bootstrap-select.min.css"), rel="stylesheet")
+        link(href= locals.getStaticFile("/components/datatables/media/css/dataTables.bootstrap.min.css"), rel="stylesheet")
+        link(href= locals.getStaticFile("/components/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"), rel="stylesheet")
+        link(href= locals.getStaticFile("/components/sweetalert/dist/sweetalert.css"), rel="stylesheet")
+        link(href= locals.getStaticFile("/scss/style.css"), rel="stylesheet")
+
+        block style
+
+
+    body(class= bodyClass || 'theme-blue')
+        block body
+            block bars
+                .page-loader-wrapper
+                    .loader
+                        .preloader
+                            .spinner-layer.pl-red
+                                .circle-clipper.left
+                                    .circle
+                                .circle-clipper.right
+                                    .circle
+                        p Please wait...
+
+                .overlay
+
+                include ./parts/top-bar
+
+                section
+                    include ./parts/sidebar
+
+            section.content
+                .container-fluid
+                    block content
+
+
+        script(src= locals.getStaticFile("/components/jquery/dist/jquery.min.js"))
+        script(src= locals.getStaticFile("/components/bootstrap/dist/js/bootstrap.min.js"))
+        script(src= locals.getStaticFile("/components/Waves//dist/waves.min.js"))
+        script(src= locals.getStaticFile("/components/jquery-validation/dist/jquery.validate.min.js"))
+        script(src= locals.getStaticFile("/components/jquery-countTo/jquery.countTo.js"))
+
+        script(src= locals.getStaticFile("/components/datatables/media/js/jquery.dataTables.min.js"))
+        script(src= locals.getStaticFile("/components/datatables/media/js/dataTables.bootstrap.min.js"))
+        script(src= locals.getStaticFile("/components/bootstrap-select/dist/js/bootstrap-select.min.js"))
+        script(src= locals.getStaticFile("/components/ajax-bootstrap-select/dist/js/ajax-bootstrap-select.min.js"))
+        script(src= locals.getStaticFile("/components/jquery-slimscroll/jquery.slimscroll.min.js"))
+        script(src= locals.getStaticFile("/components/autosize/dist/autosize.min.js"))
+        script(src= locals.getStaticFile("/components/momentjs/moment.js"))
+        script(src= locals.getStaticFile("/components/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"))
+        script(src= locals.getStaticFile("/components/sweetalert/dist/sweetalert.min.js"))
+        script(src= locals.getStaticFile("/components/tinymce/tinymce.js"))
+
+        script(src= locals.getStaticFile("/js/widgets/models-info.js"))
+        script(src= locals.getStaticFile("/js/admin.js"))
+        script(src= locals.getStaticFile("/js/pages/forms/basic-form-elements.js"))
+        script(src= locals.getStaticFile("/js/pages/tables/jquery-datatable.js"))
+        script(src= locals.getStaticFile("/js/pages/ui/modals.js"))
+
+        script(src= locals.getStaticFile("/js/admin-interface.js"))

@@ -1,0 +1,4 @@
+// Render widgets from page
+if $page
+    each widget in $page.getWidgets()
+        != widget.render()

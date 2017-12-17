@@ -1,6 +1,7 @@
-dist/
-node_modules/
-static/
-flow-typed/
-docs/
-test/
+/node_modules/
+/static/
+/flow-typed/
+/docs/
+/test/
+/packages/**/dist/
+Gulpfile.js

@@ -1,0 +1,9 @@
+.form-group
+    small= $field.getTitle()
+    .form-line(class= $field.isDisabled() ? 'disabled' : '')
+        input(
+        type="text",
+        name= $field.getField(),
+        value= value,
+        disabled= $field.isDisabled()
+        ).form-control

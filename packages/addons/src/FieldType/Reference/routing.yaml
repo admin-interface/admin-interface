@@ -1,0 +1,11 @@
+getSelected:
+    route: /get_selected
+    controller: ./API.js
+    action: getSelected
+
+getItems:
+    route: /get_items
+    controller: ./API.js
+    action: getItems
+
+

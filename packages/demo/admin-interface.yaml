@@ -1,0 +1,28 @@
+Config:
+    locals:
+        branding:
+            siteName: Admin Interface DEMO
+
+Model:
+    User: ./admin-interface/models/User.js
+    Post: ./admin-interface/models/Post.js
+    Comment: ./admin-interface/models/Comment.js
+    Category: ./admin-interface/models/Category.js
+
+Menu:
+    Blog:
+        title: Blog menu
+        items:
+            User:
+                context: Model.User
+                icon: person
+            Post:
+                context: Model.Post
+                icon: content_paste
+                children:
+                    Comment:
+                        context: Model.Comment
+                        icon: comment
+                    Category:
+                        context: Model.Category
+                        icon: apps
