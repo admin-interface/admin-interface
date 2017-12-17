@@ -1,0 +1,426 @@
+0 silly input [ 'publish' ]
+1 silly flags { _: [ 'publish' ], 'reject-cycles': false, rejectCycles: false }
+2 verbose rootPath /Users/arthurkuzmenko/projects/admin-interface/admin-interface
+3 info version 2.5.1
+4 silly isInitialized
+5 silly isInitialized true
+6 silly existsSync /Users/arthurkuzmenko/projects/admin-interface/admin-interface/VERSION
+7 silly initialize attempt
+8 info current version 0.0.8
+9 silly isDetachedHead
+10 silly getCurrentBranch
+11 verbose getCurrentBranch mono-repository
+12 verbose isDetachedHead false
+13 silly getCurrentBranch
+14 verbose getCurrentBranch mono-repository
+15 silly getUpdates
+16 info Checking for updated packages...
+17 silly hasTags
+18 verbose hasTags true
+19 silly getLastTag
+20 verbose getLastTag v1.0.0-alpha.5.1
+21 info Comparing with v1.0.0-alpha.5.1.
+22 silly diffSinceIn v1.0.0-alpha.5.1 packages/addons
+23 silly diff packages/addons/README.md
+23 silly diff packages/addons/package-lock.json
+23 silly diff packages/addons/package.json
+23 silly diff packages/addons/src/FieldType/Date/Date.js
+23 silly diff packages/addons/src/FieldType/Date/view.jade
+23 silly diff packages/addons/src/FieldType/Integer/Integer.js
+23 silly diff packages/addons/src/FieldType/Integer/view.jade
+23 silly diff packages/addons/src/FieldType/Reference/API.js
+23 silly diff packages/addons/src/FieldType/Reference/Reference.js
+23 silly diff packages/addons/src/FieldType/Reference/routing.yaml
+23 silly diff packages/addons/src/FieldType/Reference/view.jade
+23 silly diff packages/addons/src/FieldType/Select/Select.js
+23 silly diff packages/addons/src/FieldType/Select/view.jade
+23 silly diff packages/addons/src/FieldType/String/String.js
+23 silly diff packages/addons/src/FieldType/String/view.jade
+23 silly diff packages/addons/src/FieldType/Textarea/Textarea.js
+23 silly diff packages/addons/src/FieldType/Textarea/view.jade
+23 silly diff packages/addons/src/FieldType/Tinymce/Tinymce.js
+23 silly diff packages/addons/src/FieldType/Tinymce/view.jade
+23 silly diff packages/addons/src/Page/HomePage/HomePage.js
+23 silly diff packages/addons/src/Widget/ModelsInfoWidget/API.js
+23 silly diff packages/addons/src/Widget/ModelsInfoWidget/ModelsInfoWidget.js
+23 silly diff packages/addons/src/Widget/ModelsInfoWidget/routing.yaml
+23 silly diff packages/addons/src/Widget/ModelsInfoWidget/view.jade
+24 silly diffSinceIn v1.0.0-alpha.5.1 packages/core
+25 silly diff packages/core/README.md
+25 silly diff packages/core/package-lock.json
+25 silly diff packages/core/package.json
+25 silly diff packages/core/src/Column/Column.js
+25 silly diff packages/core/src/Column/Interface/ColumnInterface.js
+25 silly diff packages/core/src/EventEmitter/EventEmitter.js
+25 silly diff packages/core/src/EventEmitter/Interface/EventEmitterInterface.js
+25 silly diff packages/core/src/EventEmitter/Type/HandlerType.js
+25 silly diff packages/core/src/EventEmitter/Type/SubscriberType.js
+25 silly diff packages/core/src/FieldFactory/FieldFactory.js
+25 silly diff packages/core/src/FieldTypeAbstract/FieldTypeAbstract.js
+25 silly diff packages/core/src/FieldTypeAbstract/Interface/FieldTypeInterface.js
+25 silly diff packages/core/src/FieldTypeAbstract/Type/RoutingType.js
+25 silly diff packages/core/src/Filter/Filter.js
+25 silly diff packages/core/src/Filter/Type/FilterHandlerType.js
+25 silly diff packages/core/src/Filter/Type/FilterType.js
+25 silly diff packages/core/src/ModelAbstract/Interface/ModelInterface.js
+25 silly diff packages/core/src/ModelAbstract/ModelAbstract.js
+25 silly diff packages/core/src/ModelAbstract/ModelBuilder.js
+25 silly diff packages/core/src/ModelAbstract/Type/FieldType.js
+25 silly diff packages/core/src/PageAbstract/Interface/PageInterface.js
+25 silly diff packages/core/src/PageAbstract/PageAbstract.js
+25 silly diff packages/core/src/Plugin/Interface/PluginInterface.js
+25 silly diff packages/core/src/Plugin/Plugin.js
+25 silly diff packages/core/src/Registry/Registry.js
+25 silly diff packages/core/src/Registry/Repository.js
+25 silly diff packages/core/src/Tab/Interface/TabInterface.js
+25 silly diff packages/core/src/Tab/Tab.js
+25 silly diff packages/core/src/Utils/Config/AdminInterfaceRc.js
+25 silly diff packages/core/src/Utils/Menu/Parser.js
+25 silly diff packages/core/src/Utils/Menu/Type/MenuType.js
+25 silly diff packages/core/src/Utils/Sequelize/Query.js
+25 silly diff packages/core/src/Utils/Yaml/Parser.js
+25 silly diff packages/core/src/Utils/index.js
+25 silly diff packages/core/src/WidgetAbstract/Interface/WidgetAbstractInterface.js
+25 silly diff packages/core/src/WidgetAbstract/Type/RoutingType.js
+25 silly diff packages/core/src/WidgetAbstract/WidgetAbstract.js
+25 silly diff packages/core/src/WidgetFactory/WidgetFactory.js
+25 silly diff packages/core/src/index.js
+25 silly diff packages/core/views/base.jade
+25 silly diff packages/core/views/model/list.jade
+25 silly diff packages/core/views/model/single.jade
+25 silly diff packages/core/views/pages/error/404.jade
+25 silly diff packages/core/views/pages/error/500.jade
+25 silly diff packages/core/views/pages/main.jade
+25 silly diff packages/core/views/parts/create-modal.jade
+25 silly diff packages/core/views/parts/list-card.jade
+25 silly diff packages/core/views/parts/menu.jade
+25 silly diff packages/core/views/parts/sidebar.jade
+25 silly diff packages/core/views/parts/top-bar.jade
+25 silly diff packages/core/views/widget/render-widgets.jade
+26 silly diffSinceIn v1.0.0-alpha.5.1 packages/demo
+27 silly diff packages/demo/.gitignore
+27 silly diff packages/demo/README.md
+27 silly diff packages/demo/admin-interface.yaml
+27 silly diff packages/demo/admin-interface/models/Category.js
+27 silly diff packages/demo/admin-interface/models/Comment.js
+27 silly diff packages/demo/admin-interface/models/Post.js
+27 silly diff packages/demo/admin-interface/models/User.js
+27 silly diff packages/demo/config/config.json
+27 silly diff packages/demo/db.development.sqlite
+27 silly diff packages/demo/fixtures.js
+27 silly diff packages/demo/fixtures/categories.json
+27 silly diff packages/demo/fixtures/comments.json
+27 silly diff packages/demo/fixtures/posts.json
+27 silly diff packages/demo/fixtures/users.json
+27 silly diff packages/demo/index.js
+27 silly diff packages/demo/models/category.js
+27 silly diff packages/demo/models/comment.js
+27 silly diff packages/demo/models/index.js
+27 silly diff packages/demo/models/post.js
+27 silly diff packages/demo/models/user.js
+27 silly diff packages/demo/package-lock.json
+27 silly diff packages/demo/package.json
+28 silly diffSinceIn v1.0.0-alpha.5.1 packages/express
+29 silly diff packages/express/README.md
+29 silly diff packages/express/config/admin-interface.yaml
+29 silly diff packages/express/config/config.yaml
+29 silly diff packages/express/config/field-types.yaml
+29 silly diff packages/express/config/pages.yaml
+29 silly diff packages/express/config/widgets.yaml
+29 silly diff packages/express/package-lock.json
+29 silly diff packages/express/package.json
+29 silly diff packages/express/src/AdminInterface/AdminInterface.js
+29 silly diff packages/express/src/Controller/Middleware/MiddlewareCheckHasModel.js
+29 silly diff packages/express/src/Controller/Middleware/MiddlewareEventEmitter.js
+29 silly diff packages/express/src/Controller/Middleware/MiddlewareHandlerError.js
+29 silly diff packages/express/src/Controller/ModelController/API/APIModelController.js
+29 silly diff packages/express/src/Controller/ModelController/ModelController.js
+29 silly diff packages/express/src/Event/Events/set-config.js
+29 silly diff packages/express/src/Event/Events/start.js
+29 silly diff packages/express/src/Event/Installation.js
+29 silly diff packages/express/src/Router/Router.js
+29 silly diff packages/express/src/Utils/Config/Config.js
+29 silly diff packages/express/src/Utils/ErrorResponse/ErrorResponse.js
+29 silly diff packages/express/src/Utils/Mount/Mount.js
+29 silly diff packages/express/src/Utils/View/Link.js
+29 silly diff packages/express/src/Utils/View/LinkType/FieldTypeAPI.js
+29 silly diff packages/express/src/Utils/View/LinkType/MenuView.js
+29 silly diff packages/express/src/Utils/View/LinkType/ModelAPI.js
+29 silly diff packages/express/src/Utils/View/LinkType/ModelView.js
+29 silly diff packages/express/src/Utils/View/LinkType/PageView.js
+29 silly diff packages/express/src/Utils/View/LinkType/WidgetAPI.js
+29 silly diff packages/express/src/Utils/View/Static.js
+29 silly diff packages/express/src/index.js
+30 silly diffSinceIn v1.0.0-alpha.5.1 packages/front
+31 silly diff packages/front/.bowerrc
+31 silly diff packages/front/.gitignore
+31 silly diff packages/front/bower.json
+31 silly diff packages/front/package-lock.json
+31 silly diff packages/front/package.json
+31 silly diff packages/front/src/scss/_alerts.scss
+31 silly diff packages/front/src/scss/_badgelistgroupitem.scss
+31 silly diff packages/front/src/scss/_bootstrapnotify.scss
+31 silly diff packages/front/src/scss/_bootstrapselect.scss
+31 silly diff packages/front/src/scss/_breadcrumbs.scss
+31 silly diff packages/front/src/scss/_buttons.scss
+31 silly diff packages/front/src/scss/_card.scss
+31 silly diff packages/front/src/scss/_charts.scss
+31 silly diff packages/front/src/scss/_checkboxradio.scss
+31 silly diff packages/front/src/scss/_collapse.scss
+31 silly diff packages/front/src/scss/_colorpicker.scss
+31 silly diff packages/front/src/scss/_customanimate.scss
+31 silly diff packages/front/src/scss/_dashboard.scss
+31 silly diff packages/front/src/scss/_datetimepicker.scss
+31 silly diff packages/front/src/scss/_demo.scss
+31 silly diff packages/front/src/scss/_dialogs.scss
+31 silly diff packages/front/src/scss/_dropdownmenu.scss
+31 silly diff packages/front/src/scss/_dropzone.scss
+31 silly diff packages/front/src/scss/_formwizard.scss
+31 silly diff packages/front/src/scss/_general.scss
+31 silly diff packages/front/src/scss/_helpers.scss
+31 silly diff packages/front/src/scss/_infobox.scss
+31 silly diff packages/front/src/scss/_inputformgroup.scss
+31 silly diff packages/front/src/scss/_ionrangeslider.scss
+31 silly diff packages/front/src/scss/_jquerydatatable.scss
+31 silly diff packages/front/src/scss/_jquerynestable.scss
+31 silly diff packages/front/src/scss/_labels.scss
+31 silly diff packages/front/src/scss/_leftsidebaroverlay.scss
+31 silly diff packages/front/src/scss/_lightgallery.scss
+31 silly diff packages/front/src/scss/_maps.scss
+31 silly diff packages/front/src/scss/_materialicons.scss
+31 silly diff packages/front/src/scss/_materialize.scss
+31 silly diff packages/front/src/scss/_media.scss
+31 silly diff packages/front/src/scss/_mediaobject.scss
+31 silly diff packages/front/src/scss/_mixins.scss
+31 silly diff packages/front/src/scss/_modals.scss
+31 silly diff packages/front/src/scss/_multiselect.scss
+31 silly diff packages/front/src/scss/_navbar.scss
+31 silly diff packages/front/src/scss/_navtabs.scss
+31 silly diff packages/front/src/scss/_noUISlider.scss
+31 silly diff packages/front/src/scss/_pageloader.scss
+31 silly diff packages/front/src/scss/_pagination.scss
+31 silly diff packages/front/src/scss/_panels.scss
+31 silly diff packages/front/src/scss/_preloaders.scss
+31 silly diff packages/front/src/scss/_progressbars.scss
+31 silly diff packages/front/src/scss/_searchbar.scss
+31 silly diff packages/front/src/scss/_switch.scss
+31 silly diff packages/front/src/scss/_tables.scss
+31 silly diff packages/front/src/scss/_tagsinput.scss
+31 silly diff packages/front/src/scss/_thumbnails.scss
+31 silly diff packages/front/src/scss/_tooltippopovers.scss
+31 silly diff packages/front/src/scss/_variables.scss
+31 silly diff packages/front/src/scss/_waveseffect.scss
+31 silly diff packages/front/src/scss/admin-interface/_all-items.scss
+31 silly diff packages/front/src/scss/admin-interface/cart.scss
+31 silly diff packages/front/src/scss/admin-interface/field-types/_all-field-types.scss
+31 silly diff packages/front/src/scss/admin-interface/field-types/reference.scss
+31 silly diff packages/front/src/scss/admin-interface/widgets/_all-widgets.scss
+31 silly diff packages/front/src/scss/admin-interface/widgets/widget-models-info.scss
+31 silly diff packages/front/src/scss/browser-support/_ie10.scss
+31 silly diff packages/front/src/scss/browser-support/_ie11.scss
+31 silly diff packages/front/src/scss/pages/_404.scss
+31 silly diff packages/front/src/scss/pages/_500.scss
+31 silly diff packages/front/src/scss/pages/_forgotpasswordpage.scss
+31 silly diff packages/front/src/scss/pages/_loginpage.scss
+31 silly diff packages/front/src/scss/pages/_signuppage.scss
+31 silly diff packages/front/src/scss/style.scss
+31 silly diff packages/front/src/scss/themes/_all-themes.scss
+31 silly diff packages/front/src/scss/themes/_theme-color-variables.scss
+31 silly diff packages/front/src/scss/themes/theme-amber.scss
+31 silly diff packages/front/src/scss/themes/theme-black.scss
+31 silly diff packages/front/src/scss/themes/theme-blue-grey.scss
+31 silly diff packages/front/src/scss/themes/theme-blue.scss
+31 silly diff packages/front/src/scss/themes/theme-brown.scss
+31 silly diff packages/front/src/scss/themes/theme-cyan.scss
+31 silly diff packages/front/src/scss/themes/theme-deep-orange.scss
+31 silly diff packages/front/src/scss/themes/theme-deep-purple.scss
+31 silly diff packages/front/src/scss/themes/theme-green.scss
+31 silly diff packages/front/src/scss/themes/theme-grey.scss
+31 silly diff packages/front/src/scss/themes/theme-indigo.scss
+31 silly diff packages/front/src/scss/themes/theme-light-blue.scss
+31 silly diff packages/front/src/scss/themes/theme-light-green.scss
+31 silly diff packages/front/src/scss/themes/theme-lime.scss
+31 silly diff packages/front/src/scss/themes/theme-orange.scss
+31 silly diff packages/front/src/scss/themes/theme-pink.scss
+31 silly diff packages/front/src/scss/themes/theme-purple.scss
+31 silly diff packages/front/src/scss/themes/theme-red.scss
+31 silly diff packages/front/src/scss/themes/theme-teal.scss
+31 silly diff packages/front/src/scss/themes/theme-yellow.scss
+31 silly diff packages/front/static/images/animation-bg.jpg
+31 silly diff packages/front/static/images/image-gallery/1.jpg
+31 silly diff packages/front/static/images/image-gallery/10.jpg
+31 silly diff packages/front/static/images/image-gallery/11.jpg
+31 silly diff packages/front/static/images/image-gallery/12.jpg
+31 silly diff packages/front/static/images/image-gallery/13.jpg
+31 silly diff packages/front/static/images/image-gallery/14.jpg
+31 silly diff packages/front/static/images/image-gallery/15.jpg
+31 silly diff packages/front/static/images/image-gallery/16.jpg
+31 silly diff packages/front/static/images/image-gallery/17.jpg
+31 silly diff packages/front/static/images/image-gallery/18.jpg
+31 silly diff packages/front/static/images/image-gallery/19.jpg
+31 silly diff packages/front/static/images/image-gallery/2.jpg
+31 silly diff packages/front/static/images/image-gallery/20.jpg
+31 silly diff packages/front/static/images/image-gallery/3.jpg
+31 silly diff packages/front/static/images/image-gallery/4.jpg
+31 silly diff packages/front/static/images/image-gallery/5.jpg
+31 silly diff packages/front/static/images/image-gallery/6.jpg
+31 silly diff packages/front/static/images/image-gallery/7.jpg
+31 silly diff packages/front/static/images/image-gallery/8.jpg
+31 silly diff packages/front/static/images/image-gallery/9.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-1.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-10.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-11.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-12.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-13.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-14.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-15.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-16.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-17.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-18.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-19.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-2.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-20.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-3.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-4.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-5.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-6.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-7.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-8.jpg
+31 silly diff packages/front/static/images/image-gallery/thumb/thumb-9.jpg
+31 silly diff packages/front/static/images/screenshot.png
+31 silly diff packages/front/static/images/thumbs-up.png
+31 silly diff packages/front/static/images/user-img-background.jpg
+31 silly diff packages/front/static/images/user.jpg
+31 silly diff packages/front/static/images/user.png
+31 silly diff packages/front/static/js/admin-interface.js
+31 silly diff packages/front/static/js/admin.js
+31 silly diff packages/front/static/js/demo.js
+31 silly diff packages/front/static/js/helpers.js
+31 silly diff packages/front/static/js/pages/cards/basic.js
+31 silly diff packages/front/static/js/pages/cards/colored.js
+31 silly diff packages/front/static/js/pages/charts/chartjs.js
+31 silly diff packages/front/static/js/pages/charts/flot.js
+31 silly diff packages/front/static/js/pages/charts/jquery-knob.js
+31 silly diff packages/front/static/js/pages/charts/morris.js
+31 silly diff packages/front/static/js/pages/charts/sparkline.js
+31 silly diff packages/front/static/js/pages/examples/forgot-password.js
+31 silly diff packages/front/static/js/pages/examples/sign-in.js
+31 silly diff packages/front/static/js/pages/examples/sign-up.js
+31 silly diff packages/front/static/js/pages/forms/advanced-form-elements.js
+31 silly diff packages/front/static/js/pages/forms/basic-form-elements.js
+31 silly diff packages/front/static/js/pages/forms/editors.js
+31 silly diff packages/front/static/js/pages/forms/form-validation.js
+31 silly diff packages/front/static/js/pages/forms/form-wizard.js
+31 silly diff packages/front/static/js/pages/index.js
+31 silly diff packages/front/static/js/pages/maps/google.js
+31 silly diff packages/front/static/js/pages/maps/jvectormap.js
+31 silly diff packages/front/static/js/pages/medias/image-gallery.js
+31 silly diff packages/front/static/js/pages/tables/editable-table.js
+31 silly diff packages/front/static/js/pages/tables/jquery-datatable.js
+31 silly diff packages/front/static/js/pages/ui/animations.js
+31 silly diff packages/front/static/js/pages/ui/dialogs.js
+31 silly diff packages/front/static/js/pages/ui/modals.js
+31 silly diff packages/front/static/js/pages/ui/notifications.js
+31 silly diff packages/front/static/js/pages/ui/range-sliders.js
+31 silly diff packages/front/static/js/pages/ui/sortable-nestable.js
+31 silly diff packages/front/static/js/pages/ui/tooltips-popovers.js
+31 silly diff packages/front/static/js/pages/widgets/infobox/infobox-1.js
+31 silly diff packages/front/static/js/pages/widgets/infobox/infobox-2.js
+31 silly diff packages/front/static/js/pages/widgets/infobox/infobox-3.js
+31 silly diff packages/front/static/js/pages/widgets/infobox/infobox-4.js
+31 silly diff packages/front/static/js/pages/widgets/infobox/infobox-5.js
+31 silly diff packages/front/static/js/script.js
+31 silly diff packages/front/static/js/widgets/models-info.js
+31 silly diff packages/front/static/screenshots/screenshot-1.png
+31 silly diff packages/front/static/screenshots/screenshot-2.png
+31 silly diff packages/front/static/screenshots/screenshot-3.png
+31 silly diff packages/front/static/scss/style.css
+32 verbose updated @admin-interface/addons
+33 verbose updated @admin-interface/core
+34 verbose updated @admin-interface/demo
+35 verbose updated @admin-interface/express
+36 verbose updated @admin-interface/front
+37 info Checking for prereleased packages...
+38 silly collectDependents
+39 silly isPackageDependentOf @admin-interface/addons @admin-interface/addons
+40 silly isPackageDependentOf @admin-interface/core @admin-interface/addons
+41 silly isPackageDependentOf @admin-interface/addons @admin-interface/core
+42 verbose dependent @admin-interface/addons depends on @admin-interface/core
+43 silly isPackageDependentOf @admin-interface/addons @admin-interface/demo
+44 silly isPackageDependentOf @admin-interface/core @admin-interface/demo
+45 silly isPackageDependentOf @admin-interface/addons @admin-interface/express
+46 silly isPackageDependentOf @admin-interface/core @admin-interface/express
+47 silly isPackageDependentOf @admin-interface/addons @admin-interface/front
+48 silly isPackageDependentOf @admin-interface/core @admin-interface/front
+49 silly isPackageDependentOf @admin-interface/core @admin-interface/addons
+50 silly isPackageDependentOf @admin-interface/core @admin-interface/core
+51 silly isPackageDependentOf @admin-interface/core @admin-interface/demo
+52 silly isPackageDependentOf @admin-interface/core @admin-interface/express
+53 silly isPackageDependentOf @admin-interface/core @admin-interface/front
+54 silly isPackageDependentOf @admin-interface/demo @admin-interface/addons
+55 verbose dependent @admin-interface/demo depends on @admin-interface/addons
+56 silly isPackageDependentOf @admin-interface/demo @admin-interface/core
+57 verbose dependent @admin-interface/demo depends on @admin-interface/core
+58 silly isPackageDependentOf @admin-interface/demo @admin-interface/demo
+59 silly isPackageDependentOf @admin-interface/addons @admin-interface/demo
+60 silly isPackageDependentOf @admin-interface/core @admin-interface/demo
+61 silly isPackageDependentOf @admin-interface/front @admin-interface/demo
+62 silly isPackageDependentOf @admin-interface/express @admin-interface/demo
+63 silly isPackageDependentOf @admin-interface/addons @admin-interface/demo
+64 silly isPackageDependentOf @admin-interface/core @admin-interface/demo
+65 silly isPackageDependentOf @admin-interface/front @admin-interface/demo
+66 silly isPackageDependentOf @admin-interface/demo @admin-interface/express
+67 verbose dependent @admin-interface/demo depends on @admin-interface/express
+68 silly isPackageDependentOf @admin-interface/demo @admin-interface/front
+69 verbose dependent @admin-interface/demo depends on @admin-interface/front
+70 silly isPackageDependentOf @admin-interface/express @admin-interface/addons
+71 verbose dependent @admin-interface/express depends on @admin-interface/addons
+72 silly isPackageDependentOf @admin-interface/express @admin-interface/core
+73 verbose dependent @admin-interface/express depends on @admin-interface/core
+74 silly isPackageDependentOf @admin-interface/express @admin-interface/demo
+75 silly isPackageDependentOf @admin-interface/express @admin-interface/express
+76 silly isPackageDependentOf @admin-interface/addons @admin-interface/express
+77 silly isPackageDependentOf @admin-interface/core @admin-interface/express
+78 silly isPackageDependentOf @admin-interface/front @admin-interface/express
+79 silly isPackageDependentOf @admin-interface/express @admin-interface/front
+80 verbose dependent @admin-interface/express depends on @admin-interface/front
+81 silly isPackageDependentOf @admin-interface/front @admin-interface/addons
+82 silly isPackageDependentOf @admin-interface/front @admin-interface/core
+83 silly isPackageDependentOf @admin-interface/front @admin-interface/demo
+84 silly isPackageDependentOf @admin-interface/front @admin-interface/express
+85 silly isPackageDependentOf @admin-interface/front @admin-interface/front
+86 silly collectUpdates
+87 verbose has filtered update @admin-interface/addons
+88 verbose has filtered update @admin-interface/core
+89 verbose has filtered update @admin-interface/demo
+90 verbose has filtered update @admin-interface/express
+91 verbose has filtered update @admin-interface/front
+92 silly initialize success
+93 silly execute attempt
+94 silly addFile /Users/arthurkuzmenko/projects/admin-interface/admin-interface/lerna.json
+95 silly runScriptSync preversion @admin-interface/addons
+96 silly runScriptSync version @admin-interface/addons
+97 silly runScriptSync preversion @admin-interface/core
+98 silly runScriptSync version @admin-interface/core
+99 silly runScriptSync preversion @admin-interface/demo
+100 silly runScriptSync version @admin-interface/demo
+101 silly runScriptSync preversion @admin-interface/express
+102 silly runScriptSync version @admin-interface/express
+103 silly runScriptSync preversion @admin-interface/front
+104 silly runScriptSync version @admin-interface/front
+105 silly addFile /Users/arthurkuzmenko/projects/admin-interface/admin-interface/packages/addons/package.json
+106 silly addFile /Users/arthurkuzmenko/projects/admin-interface/admin-interface/packages/core/package.json
+107 silly addFile /Users/arthurkuzmenko/projects/admin-interface/admin-interface/packages/demo/package.json
+108 silly addFile /Users/arthurkuzmenko/projects/admin-interface/admin-interface/packages/express/package.json
+109 silly addFile /Users/arthurkuzmenko/projects/admin-interface/admin-interface/packages/front/package.json
+110 silly commit v0.1.0
+111 verbose commit [ 'commit', '--no-gpg-sign', '-m', 'v0.1.0' ]
+112 error execute caught error
+113 error Error: .git/hooks/pre-commit: line 2: ./node_modules/pre-commit/hook: No such file or directory
+113 error
+113 error     at Function.module.exports.sync (/Users/arthurkuzmenko/.nvm/versions/node/v8.6.0/lib/node_modules/lerna/node_modules/execa/index.js:303:26)
+113 error     at Function.execSync (/Users/arthurkuzmenko/.nvm/versions/node/v8.6.0/lib/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
+113 error     at Function.commit (/Users/arthurkuzmenko/.nvm/versions/node/v8.6.0/lib/node_modules/lerna/lib/GitUtilities.js:88:39)
+113 error     at PublishCommand.gitCommitAndTagVersion (/Users/arthurkuzmenko/.nvm/versions/node/v8.6.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:739:30)
+113 error     at PublishCommand.commitAndTagUpdates (/Users/arthurkuzmenko/.nvm/versions/node/v8.6.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:704:27)
+113 error     at PublishCommand.execute (/Users/arthurkuzmenko/.nvm/versions/node/v8.6.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:307:14)
