@@ -1,6 +1,6 @@
 {
   "name": "@admin-interface/express",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Library for provide Admin UI",
   "main": "./dist/index.js",
   "repository": "git+https://github.com/admin-interface/admin-interface.git",
