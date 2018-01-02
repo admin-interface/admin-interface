@@ -1,6 +1,6 @@
 {
   "name": "@admin-interface/demo",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "",
   "private": true,
   "main": "index.js",
@@ -13,7 +13,7 @@
   "author": "kuzmenko1256",
   "license": "MIT",
   "dependencies": {
-    "@admin-interface/express": "^0.1.3",
+    "@admin-interface/express": "^0.1.4",
     "express": "^4.16.2",
     "sequelize": "4.1.0",
     "sqlite3": "^3.1.13"
