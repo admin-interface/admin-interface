@@ -1,12 +1,12 @@
 {
   "name": "@admin-interface/addons",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "",
   "main": "index.js",
   "author": "kuzmenko1256",
   "license": "MIT",
   "dependencies": {
-    "@admin-interface/core": "^0.1.8",
+    "@admin-interface/core": "^0.1.9",
     "jade": "^1.11.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1"
