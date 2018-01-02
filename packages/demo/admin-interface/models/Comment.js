@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const { ModelAbstract, Column, FieldFactory } = require('@admin-interface/express');
 
 const { Comment } = require('../../models');

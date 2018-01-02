@@ -2,7 +2,7 @@
  * @module src/Utils/View/LinkType/MenuView
  * @flow
  */
-import type { ContextType } from '@admin-interface/core/src/Registry/Type/MenuType';
+import type { ContextType } from '@admin-interface/core/src/Utils/Menu/Type/MenuType';
 
 import { getLinkModelList } from './ModelView';
 import { getLinkPage } from './PageView';

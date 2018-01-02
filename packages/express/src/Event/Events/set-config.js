@@ -1,7 +1,7 @@
 // @flow
 import lodash from 'lodash';
 import { Registry, WidgetAbstract, FieldTypeAbstract, ModelBuilder, Utils } from '@admin-interface/core';
-import type { MenuType } from '@admin-interface/core/src/Registry/Type/MenuType';
+import type { MenuType } from '@admin-interface/core/src/Utils/Menu/Type/MenuType';
 
 import { getLocalConfig } from '../../Utils/Config/Config';
 

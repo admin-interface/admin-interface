@@ -1,10 +1,8 @@
 [ignore]
-.*/node_modules
-./dist
-./docs
+<PROJECT_ROOT>/node_modules/gulp-bower
+<PROJECT_ROOT>/docs
 
 [include]
-./packages
 
 [libs]
 
@@ -13,3 +11,4 @@
 [options]
 module.system=node
 module.ignore_non_literal_requires=true
+module.name_mapper='^@admin-interface\/\(.*\)$' -> '<PROJECT_ROOT>/packages/\1'
