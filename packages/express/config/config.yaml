@@ -4,7 +4,7 @@ views: []
 # Default context
 locals:
     # Base jade dir
-    basedir: "@admin-interface/core/views"
+    basedir: "[module] @admin-interface/core/views"
 
     # Branding
     branding:
@@ -26,3 +26,6 @@ apiPath: /api
 
 # Widgets url path
 widgetPath: /widget
+
+# Privet configs
+Module: !!inc/file module.yaml

@@ -22,7 +22,7 @@ export function startAfter(): void {
 
 export function startEvent(): void {
     // Set admin interface views
-    Registry.getRepository('Config').push('views', path.join(Registry.getRepository('App').get('rootPath'), 'core/views'));
+    Registry.getRepository('Config').push('views', path.join(Registry.getRepository('Config').get('Module.core'), 'views'));
     Registry.getRepository('App').get('instance').set('view engine', 'jade');
     Registry.getRepository('App').get('instance').set('views', Registry.getRepository('Config').get('views'));
 }
@@ -33,7 +33,7 @@ export function startBefore(): void {
     // Set routing and middleware
     Registry.getRepository('App').get('instance').use(bodyParser.urlencoded({ extended: false }));
     Registry.getRepository('App').get('instance').use(Registry.getRepository('Config').get('staticPath'), express.static(
-        path.join(Registry.getRepository('App').get('rootPath'), 'front/static')
+        path.join(Registry.getRepository('Config').get('Module.front'), 'static')
     ));
     Registry.getRepository('App').get('instance').use(router.getRouter());
 }

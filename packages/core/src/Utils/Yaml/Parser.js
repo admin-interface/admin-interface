@@ -7,6 +7,7 @@ import fs          from 'fs';
 import yaml        from 'js-yaml';
 import yamlInclude from 'yaml-include';
 import lodash      from 'lodash';
+import { getInstalledPathSync } from 'get-installed-path';
 import Registry    from '../../Registry/Registry';
 
 /**
@@ -34,11 +35,20 @@ export function configParser(obj: any, dirname: string, type: any = {}): any {
         }
 
         if (typeof filePath === 'string') {
-            if (filePath.substr(0, 2) === './' || filePath.substr(0, 16) === '@admin-interface') {
-                let fsPath = filePath.replace('@admin-interface', Registry.getRepository('App').get('rootPath'));
-                if (filePath.substr(0, 2) === './') {
-                    fsPath = path.join(dirname, fsPath);
+            if (filePath.substr(0, 2) === './' || filePath.substr(0, 8) === '[module]') {
+                let fsPath: string;
+
+                if (filePath.substr(0, 8) === '[module]') {
+                    const moduleInfo: Array<string> = filePath.split(' ');
+                    const modulePath: Array<string> = moduleInfo[ 1 ].split('/');
+                    const moduleName: string = moduleInfo[ 1 ][ 0 ] === '@' ? `${ modulePath[ 0 ] }/${  modulePath[ 1 ] }` : modulePath[ 0 ];
+                    const moduleFile: string = modulePath.join('/').replace(moduleName, '');
+
+                    fsPath = path.join(getInstalledPathSync(moduleName, { local: true }), moduleFile);
+                } else {
+                    fsPath = path.join(dirname, filePath);
                 }
+
                 const info = fs.statSync(fsPath);
 
                 if (info.isFile()) {
