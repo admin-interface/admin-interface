@@ -77,7 +77,7 @@ export async function getApiList(req: express$Request, res: express$Response, ne
                 const item   = _item.get();
                 const fields = Columns.map(async (column: Column) => {
                     // reference
-                    if (column.getReferenceKey()) {
+                    if (column.getReferenceKey() && item[ column.getReference() ]) {
                         return item[ column.getReference() ][ column.getReferenceKey() ];
                     }
                     // value
