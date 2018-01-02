@@ -2,4 +2,4 @@
 # Documentation for creating custom page: https://github.com/admin-interface/admin-interface/wiki/Create-custom-page
 
 # Home page
-Home: "@admin-interface/addons/dist/Page/HomePage/HomePage.js"
+Home: "[module] @admin-interface/addons/dist/Page/HomePage/HomePage.js"
