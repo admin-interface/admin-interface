@@ -1,14 +1,11 @@
 {
   "name": "@admin-interface/front",
-  "version": "0.1.22",
+  "version": "0.1.25",
   "description": "",
   "main": "./dist/index.js",
   "author": "kuzmenko1256",
   "license": "MIT",
-  "scripts": {
-    "preinstall": "bower install -f"
-  },
-  "dependencies": {
+  "devDependencies": {
     "bower": "^1.8.2"
   }
 }
