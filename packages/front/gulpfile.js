@@ -4,12 +4,11 @@ const mincss      = require('gulp-minify-css');
 const postcss     = require('gulp-postcss');
 const runSequence = require('run-sequence');
 const del         = require('del');
-const bower       = require('gulp-bower');
 
 const config = {
     path: {
         build: {
-            scss: 'dist/scss'
+            scss: 'static/scss'
         },
         src: {
             scss: 'src/scss/style.scss'
@@ -17,7 +16,7 @@ const config = {
         watch: {
             scss: 'src/**/*.scss'
         },
-        clear: 'dist/scss'
+        clear: 'static/scss'
     }
 };
 
@@ -34,11 +33,8 @@ gulp.task('build:scss', () =>
 gulp.task('watch:scss', () =>
     gulp.watch(config.path.watch.scss, [ 'build:scss' ]));
 
-gulp.task('bower:install', () => 
-    bower({ cmd: 'install' }));
-
 gulp.task('build', () =>
-    runSequence('clear', [ 'build:scss', 'bower:install' ]));
+    runSequence('clear', [ 'build:scss' ]));
 
 gulp.task('watch', () =>
     runSequence('build', [ 'watch:scss' ]));

@@ -33,7 +33,7 @@ export function startBefore(): void {
     // Set routing and middleware
     Registry.getRepository('App').get('instance').use(bodyParser.urlencoded({ extended: false }));
     Registry.getRepository('App').get('instance').use(Registry.getRepository('Config').get('staticPath'), express.static(
-        path.join(Registry.getRepository('Config').get('Module.front'), 'dist')
+        path.join(Registry.getRepository('Config').get('Module.front'), 'static')
     ));
     Registry.getRepository('App').get('instance').use(router.getRouter());
 }
