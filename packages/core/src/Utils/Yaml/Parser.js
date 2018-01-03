@@ -44,7 +44,10 @@ export function configParser(obj: any, dirname: string, type: any = {}): any {
                     const moduleName: string = moduleInfo[ 1 ][ 0 ] === '@' ? `${ modulePath[ 0 ] }/${  modulePath[ 1 ] }` : modulePath[ 0 ];
                     const moduleFile: string = modulePath.join('/').replace(moduleName, '');
 
-                    fsPath = path.join(getInstalledPathSync(moduleName, { local: true }), moduleFile);
+                    fsPath = path.join(getInstalledPathSync(moduleName, {
+                        local: true,
+                        cwd:   Registry.getRepository('App').get('cwd')
+                    }), moduleFile);
                 } else {
                     fsPath = path.join(dirname, filePath);
                 }

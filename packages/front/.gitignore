@@ -1,2 +1,2 @@
-static/components
-./static/scss
+!dist
+dist/components

@@ -40,3 +40,4 @@ As a basis UI is taken [AdminBSB - Material Design](https://github.com/gurayyara
 
 ### License
 **Admin Interface** is an open source project that is licensed under the [MIT license](http://opensource.org/licenses/MIT).
+

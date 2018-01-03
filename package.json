@@ -6,11 +6,11 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
-    "dev": "lerna bootstrap && npm run watch",
+    "dev": "lerna bootstrap --hoist=glob && npm run watch",
     "lint": "eslint .",
     "flow-status": "flow status",
     "check-error": "npm run flow-status",
-    "prepublish": "npm run check-error && npm run build"
+    "publish": "npm run check-error && npm run build && lerna publish"
   },
   "author": "",
   "license": "ISC",

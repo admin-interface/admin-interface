@@ -9,7 +9,7 @@ const bower       = require('gulp-bower');
 const config = {
     path: {
         build: {
-            scss: 'static/scss'
+            scss: 'dist/scss'
         },
         src: {
             scss: 'src/scss/style.scss'
@@ -17,7 +17,7 @@ const config = {
         watch: {
             scss: 'src/**/*.scss'
         },
-        clear: 'static/scss'
+        clear: 'dist/scss'
     }
 };
 
@@ -42,3 +42,4 @@ gulp.task('build', () =>
 
 gulp.task('watch', () =>
     runSequence('build', [ 'watch:scss' ]));
+
