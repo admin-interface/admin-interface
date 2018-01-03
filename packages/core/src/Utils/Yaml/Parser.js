@@ -7,7 +7,7 @@ import fs          from 'fs';
 import yaml        from 'js-yaml';
 import yamlInclude from 'yaml-include';
 import lodash      from 'lodash';
-import { getInstalledPathSync } from 'get-installed-path';
+import globby      from 'globby';
 import Registry    from '../../Registry/Registry';
 
 /**
@@ -44,10 +44,15 @@ export function configParser(obj: any, dirname: string, type: any = {}): any {
                     const moduleName: string = moduleInfo[ 1 ][ 0 ] === '@' ? `${ modulePath[ 0 ] }/${  modulePath[ 1 ] }` : modulePath[ 0 ];
                     const moduleFile: string = modulePath.join('/').replace(moduleName, '');
 
-                    fsPath = path.join(getInstalledPathSync(moduleName, {
-                        local: true,
-                        cwd:   Registry.getRepository('App').get('cwd')
-                    }), moduleFile);
+                    fsPath = path.join(
+                        globby.sync(`${ Registry.getRepository('App').get('cwd')  }/node_modules/**/${ moduleName }/`, {
+                            nodir: false
+                        })[ 0 ],
+                        moduleFile
+                    );
+
+                    global.console.log('building file [%s]: %s', moduleName, fsPath);
+                    global.console.log('------------------');
                 } else {
                     fsPath = path.join(dirname, filePath);
                 }

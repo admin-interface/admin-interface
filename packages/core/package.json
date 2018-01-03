@@ -1,6 +1,6 @@
 {
   "name": "@admin-interface/core",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "",
   "main": "./dist/index.js",
   "repository": {
@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/admin-interface/admin-interface#readme",
   "dependencies": {
-    "get-installed-path": "^4.0.8",
+    "globby": "^7.1.1",
     "jade": "^1.11.0",
     "js-yaml": "^3.10.0",
     "lodash": "^4.17.4",
