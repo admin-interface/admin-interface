@@ -19,9 +19,6 @@
     "sqlite3": "^3.1.13"
   },
   "devDependencies": {
-    "@admin-interface/addons": "^0.1.23",
-    "@admin-interface/core": "^0.1.23",
-    "@admin-interface/front": "^0.1.22",
     "nodemon": "^1.13.3",
     "sequelize-fixtures": "^0.6.0"
   }
