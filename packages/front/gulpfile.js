@@ -9,15 +9,18 @@ const bower       = require('gulp-bower');
 const config = {
     path: {
         build: {
-            scss: 'static/scss'
+            scss: 'dist/scss',
+            copy: 'dist'
         },
         src: {
-            scss: 'src/scss/style.scss'
+            scss: 'src/scss/style.scss',
+            copy: 'src/{images,js}/**/*'
         },
         watch: {
-            scss: 'src/**/*.scss'
+            scss: 'src/**/*.scss',
+            copy: 'src/{images,js}/**/*'
         },
-        clear: 'static/scss'
+        clear: 'dist'
     }
 };
 
@@ -37,8 +40,12 @@ gulp.task('watch:scss', () =>
 gulp.task('bower:install', () => 
     bower({ cmd: 'install' }));
 
+gulp.task('copy', () =>
+    gulp.src(config.path.src.copy)
+        .pipe(gulp.dest(config.path.build.copy)));
+
 gulp.task('build', () =>
-    runSequence('clear', [ 'build:scss', 'bower:install' ]));
+    runSequence('clear', [ 'build:scss', 'bower:install', 'copy' ]));
 
 gulp.task('watch', () =>
     runSequence('build', [ 'watch:scss' ]));
