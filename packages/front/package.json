@@ -1,6 +1,6 @@
 {
   "name": "@admin-interface/front",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "",
   "main": "./dist/index.js",
   "author": "kuzmenko1256",
