@@ -1,6 +1,6 @@
 {
   "name": "@admin-interface/core",
-  "version": "0.1.13",
+  "version": "0.1.15",
   "description": "",
   "main": "./dist/index.js",
   "repository": {

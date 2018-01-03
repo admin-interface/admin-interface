@@ -1,6 +1,6 @@
 {
   "name": "@admin-interface/express",
-  "version": "0.1.13",
+  "version": "0.1.15",
   "description": "Library for provide Admin UI",
   "main": "./dist/index.js",
   "repository": "git+https://github.com/admin-interface/admin-interface.git",
@@ -22,9 +22,9 @@
     "forms"
   ],
   "dependencies": {
-    "@admin-interface/addons": "^0.1.13",
-    "@admin-interface/core": "^0.1.13",
-    "@admin-interface/front": "^0.1.13",
+    "@admin-interface/addons": "^0.1.15",
+    "@admin-interface/core": "^0.1.15",
+    "@admin-interface/front": "^0.1.15",
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
