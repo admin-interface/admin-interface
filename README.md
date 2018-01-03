@@ -26,9 +26,9 @@ app.listen(3000, () => console.log('run server on 3000 port'));
 ```
 
 ### Screenshots
-![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/static/screenshots/screenshot-1.png)
-![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/static/screenshots/screenshot-2.png)
-![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/static/screenshots/screenshot-3.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/src/images/screenshots/screenshot-1.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/src/images/screenshots/screenshot-2.png)
+![a](https://raw.githubusercontent.com/admin-interface/admin-interface/master/packages/front/src/images/screenshots/screenshot-3.png)
 
 As a basis UI is taken [AdminBSB - Material Design](https://github.com/gurayyarar/AdminBSBMaterialDesign)
 
