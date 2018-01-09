@@ -11,8 +11,8 @@ $ npm install --save @admin-interface/core@next @admin-interface/express@next
 
 ### Connect to Your project
 ```javascript
-const app               = require('express')();
-const AdminInterface    = require('@admin-interface/express').AdminInterface;
+const app            = require('express')();
+const AdminInterface = require('@admin-interface/express');
 
 const adminInterface = new AdminInterface();
 adminInterface.setConfigFile(__dirname, 'admin-interface.yaml');
