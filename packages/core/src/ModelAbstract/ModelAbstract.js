@@ -7,13 +7,13 @@ import Registry from '../Registry/Registry';
 import Column from '../Column/Column';
 import Tab from '../Tab/Tab';
 
-import { ModelInterface } from './Interface/ModelInterface';
-import { type FieldType } from './Type/FieldType';
+import type { IModel } from './IModel';
+import type { FieldType } from './types';
 
 /**
  * Model Abstract class
  */
-class ModelAbstract implements ModelInterface<ModelAbstract> {
+class ModelAbstract implements IModel {
     /**
      * Model key
      * @type {string}

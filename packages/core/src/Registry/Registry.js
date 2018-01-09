@@ -3,20 +3,11 @@ import lodash from 'lodash';
 
 import Repository from './Repository';
 
-let instance = null;
-
 /**
  * Registry
  */
 class Registry {
     _repositories: { [string]: Repository } = {};
-
-    constructor() {
-        if (!instance) {
-            instance = this;
-        }
-        return instance;
-    }
 
     /**
      * Get repository

@@ -3,7 +3,7 @@
  * @flow
  */
 import path from 'path';
-import { Utils } from '@admin-interface/core';
+import { yamlConfigParse } from '@admin-interface/core';
 
 /**
  * Get local configuration
@@ -11,5 +11,5 @@ import { Utils } from '@admin-interface/core';
  */
 export function getLocalConfig(): { [string]: any } {
     const root = path.join(__dirname, '../../../config');
-    return Utils.yamlConfigParse(root, 'admin-interface.yaml');
+    return yamlConfigParse(root, 'admin-interface.yaml');
 }

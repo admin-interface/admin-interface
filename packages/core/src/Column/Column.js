@@ -1,11 +1,11 @@
 // @flow
-import { ColumnInterface } from './Interface/ColumnInterface';
+import { IColumn } from './IColumn';
 
 /**
  * Column class
- * @implements ColumnInterface
+ * @implements IColumn
  */
-class Column implements ColumnInterface<Column> {
+class Column implements IColumn {
     /**
      * Title column
      * @type {string}

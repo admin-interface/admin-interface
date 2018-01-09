@@ -2,7 +2,7 @@
  * @module src/Utils/Menu/Parser
  * @flow
  */
-import type { MenuType, MenuItemType, ContextType } from './Type/MenuType';
+import type { MenuType, MenuItemType, ContextType } from './types';
 
 /**
  * Get content for menu item
@@ -32,7 +32,7 @@ function getContext(context: string | ContextType, key: string): ContextType {
 function menuItemParser(items: { [string]: MenuItemType }): { [string]: MenuItemType } {
     const result: { [string]: MenuItemType } = {};
     // eslint-disable-next-line no-restricted-syntax
-    for (const key: string in items) {
+    for (const key in items) {
         if (Object.prototype.hasOwnProperty.call(items, key)) {
             const menuItem   = items[ key ];
             menuItem.context = getContext(menuItem.context, key);

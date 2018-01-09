@@ -6,13 +6,13 @@ import lodash from 'lodash';
 import Registry from '../Registry/Registry';
 import { yamlConfigRoutingParser } from '../Utils/Yaml/Parser';
 
-import { FieldTypeInterface } from './Interface/FieldTypeInterface';
-import type { RoutingType } from './Type/RoutingType';
+import type { IFieldType } from './IFieldType';
+import type { RoutingType } from '../Utils/types';
 
 /**
  * Field Type Abstract class
  */
-class FieldTypeAbstract implements FieldTypeInterface<FieldTypeAbstract> {
+class FieldTypeAbstract implements IFieldType {
     /**
      * Key FieldType
      * @type {string}

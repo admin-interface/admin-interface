@@ -1,37 +1,18 @@
 // @flow
-import { type SubscriberType } from './Type/SubscriberType';
-import { type HandlerType } from './Type/HandlerType';
-import { EventEmitterInterface } from './Interface/EventEmitterInterface';
-
-let instance = null;
+import type { SubscriberType, HandlerType } from './types';
+import type { IEventEmitter } from './IEventEmitter';
 
 /**
  * Event Emitter class
  * @implements EventEmitterInterface
  */
-class EventEmitter implements EventEmitterInterface {
+class EventEmitter implements IEventEmitter {
     /**
      * Collection of subscribers
      * @type {Array<SubscriberType>}
      * @private
      */
-    _subscribers: Array<SubscriberType> = [];
-
-    constructor() {
-        if (!instance) {
-            instance = this;
-        }
-        return instance;
-    }
-
-    /**
-     * Get instance class
-     *
-     * @returns EventEmitter
-     */
-    static getInstance(): EventEmitter {
-        return new EventEmitter();
-    }
+    _subscribers: SubscriberType[] = [];
 
     /**
      * Subscribe
@@ -41,13 +22,13 @@ class EventEmitter implements EventEmitterInterface {
      * @param  {any} context? - Handler context
      * @returns void
      */
-    static subscribe(event: string, handler: HandlerType, priority: number = 10, context?: any): void {
+    subscribe(event: string, handler: HandlerType, priority: number = 10, context?: any): void {
         const subscriber: SubscriberType = {
             event,
             handler: handler.bind(context || handler),
             priority
         };
-        this.getInstance().addSubscriber(subscriber);
+        this.addSubscriber(subscriber);
     }
 
     /**
@@ -56,7 +37,7 @@ class EventEmitter implements EventEmitterInterface {
      * @param  {any} args?
      * @returns void
      */
-    static emit(event: string, args?: any): void {
+    emit(event: string, args?: any): void {
         this.getSubscribersByEvent(event)
             .map(handler => handler.handler(args));
     }
@@ -66,8 +47,8 @@ class EventEmitter implements EventEmitterInterface {
      * @param  {string} event
      * @returns {Array<SubscriberType>}
      */
-    static getSubscribersByEvent(event: string): Array<SubscriberType> {
-        return this.getInstance().getAllSubscribers().filter(
+    getSubscribersByEvent(event: string): SubscriberType[] {
+        return this.getAllSubscribers().filter(
             (subscriber: SubscriberType) => subscriber.event === event
         );
     }
@@ -85,11 +66,11 @@ class EventEmitter implements EventEmitterInterface {
      * Get all subscribers from collection
      * @returns {Array<SubscriberType>}
      */
-    getAllSubscribers(): Array<SubscriberType> {
+    getAllSubscribers(): SubscriberType[] {
         return this._subscribers.sort(
             (a: SubscriberType, b: SubscriberType) => Number(a.priority > b.priority)
         );
     }
 }
 
-export default EventEmitter;
+export default new EventEmitter();

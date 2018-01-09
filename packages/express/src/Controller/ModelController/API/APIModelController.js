@@ -3,7 +3,7 @@
  * @flow
  */
 import lodash from 'lodash';
-import { Registry, Column, Utils } from '@admin-interface/core';
+import { Registry, Column, formatOrder, getReferenceWhere, formatQueryModelList } from '@admin-interface/core';
 
 import ErrorResponse from '../../../Utils/ErrorResponse/ErrorResponse';
 import { getLinkModelSingle, getLinkModelList } from '../../../Utils/View/LinkType/ModelView';
@@ -51,7 +51,7 @@ export async function getApiList(req: express$Request, res: express$Response, ne
 
         // Order params
         const orderBy: DataTableOrderType = dataTableOrder[ 0 ];
-        const order: Array<Array<any>>    = Utils.formatOrder(
+        const order: Array<Array<any>>    = formatOrder(
             Columns[ orderBy.column ],
             orderBy.dir.toLocaleUpperCase()
         );
@@ -64,10 +64,10 @@ export async function getApiList(req: express$Request, res: express$Response, ne
 
         try {
             // Reference where
-            const whereByReference  = Utils.getReferenceWhere(Model, byReference);
+            const whereByReference  = getReferenceWhere(Model, byReference);
             // Get items
             const { rows, count }   = await Model.getModel().findAndCountAll(
-                Utils.formatQueryModelList(Model, order, query, search, whereByReference)
+                formatQueryModelList(Model, order, query, search, whereByReference)
             );
             // Records total
             const recordsTotal      = await Model.getModel().count(whereByReference ? {

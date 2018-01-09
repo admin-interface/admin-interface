@@ -1,6 +1,7 @@
 [ignore]
 <PROJECT_ROOT>/node_modules/gulp-bower
 <PROJECT_ROOT>/docs
+#<PROJECT_ROOT>/packages/\(\|addons\|core\|express\|front\)/dist
 
 [include]
 
@@ -11,4 +12,4 @@
 [options]
 module.system=node
 module.ignore_non_literal_requires=true
-module.name_mapper='^@admin-interface\/\(.*\)$' -> '<PROJECT_ROOT>/packages/\1'
+#module.name_mapper='^@admin-interface\/\(.*\)$' -> '<PROJECT_ROOT>/packages/\1'

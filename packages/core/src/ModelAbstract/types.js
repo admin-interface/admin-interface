@@ -1,5 +1,5 @@
 // @flow
-import FieldTypeAbstract from '../../FieldTypeAbstract/FieldTypeAbstract';
+import FieldTypeAbstract from '../FieldTypeAbstract/FieldTypeAbstract';
 
 /**
  * @typedef FieldType

@@ -1,18 +1,18 @@
 // @flow
 
 /**
- * @interface WidgetAbstractInterface
+ * @interface IWidget
  */
-export interface WidgetAbstractInterface<T> {
+export interface IWidget {
     _key: string,
     _title: string,
     _options: {},
 
-    setTitle(title: string): T,
+    setTitle(title: string): IWidget,
 
     getTitle(): string,
 
-    setOptions(options: {}): T,
+    setOptions(options: {}): IWidget,
 
     getOption(key: string): any,
 

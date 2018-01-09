@@ -1,5 +1,9 @@
 // @flow
-import type { HandlerType } from './HandlerType';
+
+/**
+ * @typedef HandlerType
+ */
+export type HandlerType = (args: any) => void;
 
 /**
  * @typedef SubscriberType

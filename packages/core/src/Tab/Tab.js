@@ -1,25 +1,25 @@
 // @flow
 import lodash from 'lodash';
 
-import { TabInterface } from './Interface/TabInterface';
+import type { ITab } from './ITab';
 
 /**
  * Tab class
- * @implements TabInterface
+ * @implements ITab
  */
-class Tab implements TabInterface<Tab> {
+class Tab implements ITab {
     /**
      * Fields
      * @type {Array<string>}
      * @private
      */
-    _fields: Array<string> = [];
+    _fields: string[] = [];
     /**
      * Active tab
      * @type {boolean}
      * @private
      */
-    _active: boolean       = false;
+    _active: boolean = false;
     /**
      * Title
      * @type {string}
@@ -86,7 +86,7 @@ class Tab implements TabInterface<Tab> {
      * @param {Array<string>} fields
      * @returns {Tab}
      */
-    setFields(fields: Array<string>): Tab {
+    setFields(fields: string[]): Tab {
         if (Array.isArray(fields)) {
             this._fields = fields;
         }
@@ -97,7 +97,7 @@ class Tab implements TabInterface<Tab> {
      * Get fields
      * @returns {Array<string>}
      */
-    getFields(): Array<string> {
+    getFields(): string[] {
         return this._fields;
     }
 

@@ -1,5 +1,9 @@
 // @flow
-import type { FilterHandlerType } from './FilterHandlerType';
+
+/**
+ * @typedef FilterHandlerType
+ */
+export type FilterHandlerType = (args: any) => void;
 
 /**
  * @typedef FilterType
@@ -9,3 +13,4 @@ export type FilterType = {
     handler: FilterHandlerType,
     priority: number
 }
+

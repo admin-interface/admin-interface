@@ -1,9 +1,9 @@
 // @flow
 
 /**
- * @interface ColumnInterface
+ * @interface IColumn
  */
-export interface ColumnInterface<T> {
+export interface IColumn {
     _title: string,
     _sorting: boolean,
     _modelField: string,
@@ -11,16 +11,16 @@ export interface ColumnInterface<T> {
     _modelReferenceKey: string,
     _value: any,
 
-    setTitle(title: string): T,
+    setTitle(title: string): IColumn,
     getTitle(): string,
-    setSorting(sorting: boolean): T,
+    setSorting(sorting: boolean): IColumn,
     getSorting(): boolean,
-    setField(field: string): T,
+    setField(field: string): IColumn,
     getField(): string,
-    setReference(reference: string): T,
+    setReference(reference: string): IColumn,
     getReference(): string,
-    setReferenceAndKey(key: string, reference: string): T,
-    setValue(value: any): T,
+    setReferenceAndKey(key: string, reference: string): IColumn,
+    setValue(value: any): IColumn,
     getValue(item: any): any,
     isEmptyValue(): boolean
 }

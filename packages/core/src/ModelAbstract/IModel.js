@@ -1,43 +1,43 @@
 // @flow
 import { Model as SequelizeModel } from 'sequelize';
 
-import FieldFactory from '../../FieldFactory/FieldFactory';
-import Column from '../../Column/Column';
-import Tab from '../../Tab/Tab';
+import FieldFactory from '../FieldFactory/FieldFactory';
+import Column from '../Column/Column';
+import Tab from '../Tab/Tab';
 
-import { type FieldType } from '../Type/FieldType';
+import { type FieldType } from './types';
 
 /**
- * @interface ModelInterface
+ * @interface IModel
  */
-export interface ModelInterface<T> {
+export interface IModel {
     _key: string,
-    _fields: Array<FieldType>,
-    _columns: Array<Column>,
-    _tabs: Array<Tab>,
-    _references: Array<string>,
+    _fields: FieldType[],
+    _columns: Column[],
+    _tabs: Tab[],
+    _references: string[],
 
     getModel(): SequelizeModel,
 
     getKey(): string,
 
-    setKey(key: string): T,
+    setKey(key: string): IModel,
 
-    setField(field: FieldType): T,
+    setField(field: FieldType): IModel,
 
     getFields(): Array<FieldType>,
 
     getFieldByKey(key: string): FieldType | void,
 
-    setColumn(column: Column): T,
+    setColumn(column: Column): IModel,
 
     getColumns(): Array<Column>,
 
-    setReference(reference: string): T,
+    setReference(reference: string): IModel,
 
     getReferences(): Array<string>,
 
-    setTab(tab: Tab): T,
+    setTab(tab: Tab): IModel,
 
     getTabs(): Array<Tab>,
 

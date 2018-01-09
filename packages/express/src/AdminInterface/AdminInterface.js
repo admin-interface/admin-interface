@@ -1,6 +1,10 @@
 // @flow
-import { EventEmitter, Registry, Utils } from '@admin-interface/core';
-
+import {
+    EventEmitter,
+    Registry,
+    yamlConfigParse,
+    setConfigFileFromRc
+} from '@admin-interface/core';
 import '../Event/Installation';
 
 /**
@@ -12,7 +16,7 @@ class AdminInterface {
     setConfigFile(dirname: string, configFile: string): AdminInterface { // aeslint-disable-line class-methods-use-this
         Registry.getRepository('App').set('cwd', dirname);
 
-        const config = Utils.yamlConfigParse(dirname, configFile);
+        const config = yamlConfigParse(dirname, configFile);
         EventEmitter.emit('set-config', config);
 
         // Do not use the .admininterfacerc file
@@ -24,7 +28,7 @@ class AdminInterface {
     start(): void {
         if (this.getUseRC()) {
             // Set config file from the .admininterfacerc file
-            Utils.setConfigFileFromRc();
+            setConfigFileFromRc();
         }
 
         EventEmitter.emit('start:after');

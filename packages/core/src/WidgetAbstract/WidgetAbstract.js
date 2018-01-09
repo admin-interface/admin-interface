@@ -4,16 +4,16 @@ import fs from 'fs';
 import jade from 'jade';
 
 import Registry from '../Registry/Registry';
-import { WidgetAbstractInterface } from './Interface/WidgetAbstractInterface';
 import { yamlConfigRoutingParser } from '../Utils/Yaml/Parser';
 
-import type { RoutingType } from './Type/RoutingType';
+import type { IWidget } from './IWidget';
+import type { RoutingType } from '../Utils/types';
 
 /**
  * Widget Abstract
  * @implements WidgetAbstractInterface
  */
-class WidgetAbstract implements WidgetAbstractInterface<WidgetAbstract> {
+class WidgetAbstract implements IWidget {
     /**
      * Widget key
      * @type {string}

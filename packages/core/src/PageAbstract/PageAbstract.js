@@ -1,12 +1,12 @@
 // @flow
-import { PageInterface } from './Interface/PageInterface';
 import WidgetAbstract from '../WidgetAbstract/WidgetAbstract';
+import type { IPage } from './IPage';
 
 /**
  * Page Abstract class
- * @implements PageInterface
+ * @implements IPage
  */
-class PageAbstract implements PageInterface<PageAbstract> {
+class PageAbstract implements IPage {
     /**
      * Page key
      * @type {string}
@@ -54,7 +54,7 @@ class PageAbstract implements PageInterface<PageAbstract> {
      * Render page.
      * Controller
      */
-    render(): mixed { // eslint-disable-line class-methods-use-this
+    render(): void { // eslint-disable-line class-methods-use-this
         throw new Error('Method the render is abstract');
     }
 }

@@ -2,7 +2,7 @@
  * @module src/Utils/View/LinkType/ModelAPI
  * @flow
  */
-import { Registry, Filter } from '@admin-interface/core';
+import { Registry } from '@admin-interface/core';
 
 import { getMountPath } from '../../Mount/Mount';
 
@@ -47,6 +47,5 @@ export function getLinkApiModelCreate(modelKey: string): string {
  * @returns {string}
  */
 export function getLinkApiModelSingleUpdate(modelKey: string, single: string): string {
-    const url = `${ getMountPath() + Registry.getRepository('Config').get('apiPath') + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/single/${ single }/update`;
-    return Filter.applyFilter('fun:getLinkApiModelSingleUpdate:return', url);
+    return `${ getMountPath() + Registry.getRepository('Config').get('apiPath') + Registry.getRepository('Config').get('modelPath') }/${ modelKey }/single/${ single }/update`;
 }

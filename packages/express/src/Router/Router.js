@@ -2,8 +2,7 @@
 import { Router as ExpressRouter } from 'express';
 import { Registry, PageAbstract } from '@admin-interface/core';
 
-import type { RouteType as FieldTypeRouteType } from '@admin-interface/core/src/FieldTypeAbstract/Type/RoutingType';
-import type { RouteType as WidgetRouteType } from '@admin-interface/core/src/WidgetAbstract/Type/RoutingType';
+import type { RouteType } from '@admin-interface/core';
 
 import MiddlewareEventEmitter from '../Controller/Middleware/MiddlewareEventEmitter';
 import MiddlewareHandlerError from '../Controller/Middleware/MiddlewareHandlerError';
@@ -74,7 +73,7 @@ export default class Router {
             const fieldType = Registry.getRepository('FieldType').get(key);
             const routing   = fieldType.getRouting();
             if (routing) {
-                const routingArray: Array<FieldTypeRouteType> = (Object.values(routing): any);
+                const routingArray: RouteType[] = (Object.values(routing): any);
                 routingArray.forEach((route) => {
                     if (route.route && route.handler) {
                         fieldTypeRouter.get(`/${ key + route.route }`, route.handler);
@@ -93,7 +92,7 @@ export default class Router {
             const widget  = Registry.getRepository('Widget').get(key);
             const routing = widget.getRouting();
             if (routing) {
-                const routingArray: Array<WidgetRouteType> = (Object.values(routing): any);
+                const routingArray: RouteType[] = (Object.values(routing): any);
                 routingArray.forEach(route => {
                     if (route.route && route.handler) {
                         widgetRouter.get(`/${ key + route.route }`, route.handler);

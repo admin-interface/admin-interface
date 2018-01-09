@@ -1,7 +1,7 @@
 // @flow
 import lodash from 'lodash';
-import { Registry, WidgetAbstract, FieldTypeAbstract, ModelBuilder, Utils } from '@admin-interface/core';
-import type { MenuType } from '@admin-interface/core/src/Utils/Menu/Type/MenuType';
+import { Registry, WidgetAbstract, FieldTypeAbstract, ModelBuilder, menuParser } from '@admin-interface/core';
+import type { MenuType } from '@admin-interface/core';
 
 import { getLocalConfig } from '../../Utils/Config/Config';
 
@@ -29,7 +29,7 @@ function initPages(pages): void {
 
 function initMenus(menus: { [string]: MenuType }): void {
     Object.keys(menus).forEach(key => {
-        Registry.getRepository('Menu').set(key, Utils.menuParser(menus[ key ], key));
+        Registry.getRepository('Menu').set(key, menuParser(menus[ key ], key));
     });
 }
 

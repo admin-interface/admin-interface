@@ -1,5 +1,5 @@
 const app               = require('express')();
-const AdminInterface    = require('@admin-interface/express').AdminInterface;
+const AdminInterface    = require('@admin-interface/express');
 
 const adminInterface = new AdminInterface();
 adminInterface.setConfigFile(__dirname, 'admin-interface.yaml');

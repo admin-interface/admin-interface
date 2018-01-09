@@ -2,7 +2,7 @@
 import Registry from '../Registry/Registry';
 import FieldTypeAbstract from '../FieldTypeAbstract/FieldTypeAbstract';
 
-import { type FieldType } from '../ModelAbstract/Type/FieldType';
+import { type FieldType } from '../ModelAbstract/types';
 
 /**
  * Field Factory class

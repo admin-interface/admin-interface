@@ -17,7 +17,7 @@ import Registry    from '../../Registry/Registry';
  * @param {any} type
  * @returns {any}
  */
-export function configParser(obj: any, dirname: string, type: any = {}): any {
+export function configParser(obj: any, dirname: string, type: any = {}, cache: {[key: string]: string} = {}): any {
     let imported: any = type;
 
     lodash.forIn(obj, (filePath, key) => {
@@ -26,17 +26,17 @@ export function configParser(obj: any, dirname: string, type: any = {}): any {
                 imported[ key ] = filePath;
                 imported        = lodash.values(imported);
             } else {
-                imported[ key ] = configParser(filePath, dirname);
+                imported[ key ] = configParser(filePath, dirname, {}, cache);
             }
         }
 
         if (Array.isArray(filePath)) {
-            imported[ key ] = configParser(filePath, dirname, []);
+            imported[ key ] = configParser(filePath, dirname, [], cache);
         }
 
         if (typeof filePath === 'string') {
             if (filePath.substr(0, 2) === './' || filePath.substr(0, 8) === '[module]') {
-                let fsPath: string;
+                let fsPath: string = '';
 
                 if (filePath.substr(0, 8) === '[module]') {
                     const moduleInfo: Array<string> = filePath.split(' ');
@@ -44,27 +44,36 @@ export function configParser(obj: any, dirname: string, type: any = {}): any {
                     const moduleName: string = moduleInfo[ 1 ][ 0 ] === '@' ? `${ modulePath[ 0 ] }/${  modulePath[ 1 ] }` : modulePath[ 0 ];
                     const moduleFile: string = modulePath.join('/').replace(moduleName, '');
 
-                    fsPath = path.join(
-                        globby.sync(`${ Registry.getRepository('App').get('cwd')  }/node_modules/**/${ moduleName }/`, {
+                    if (!cache[ moduleName ]) {
+                        // eslint-disable-next-line no-param-reassign
+                        cache[ moduleName ] = globby.sync(`${ Registry.getRepository('App').get('cwd')  }/node_modules/**/**/${ moduleName }/`, {
                             nodir: false
-                        })[ 0 ],
-                        moduleFile
-                    );
+                        })[ 0 ];
+                    }
 
-                    global.console.log('building file [%s]: %s', moduleName, fsPath);
-                    global.console.log('------------------');
+                    if (cache[ moduleName ]) {
+                        fsPath = path.join(cache[ moduleName ], moduleFile);
+
+                        global.console.log('connected module [%s]: %s', moduleName, fsPath);
+                        global.console.log('------------------');
+                    } else {
+                        global.console.log('module not found [%s]: %s', moduleName, fsPath);
+                        global.console.log('------------------');
+                    }
                 } else {
                     fsPath = path.join(dirname, filePath);
                 }
 
-                const info = fs.statSync(fsPath);
+                if (fsPath.length) {
+                    const info = fs.statSync(fsPath);
 
-                if (info.isFile()) {
-                    // eslint-disable-next-line global-require, import/no-dynamic-require
-                    imported[ key ] = require(fsPath);
-                }
-                if (info.isDirectory()) {
-                    imported[ key ] = fsPath;
+                    if (info.isFile()) {
+                        // eslint-disable-next-line global-require, import/no-dynamic-require
+                        imported[ key ] = require(fsPath);
+                    }
+                    if (info.isDirectory()) {
+                        imported[ key ] = fsPath;
+                    }
                 }
             } else if (!isNaN(Number(key))) { // eslint-disable-line no-restricted-globals
                 imported[ key ] = filePath;

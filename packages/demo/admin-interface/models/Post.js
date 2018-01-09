@@ -1,5 +1,5 @@
 /* eslint-disable class-methods-use-this */
-const { ModelAbstract, Column, FieldFactory, Tab } = require('@admin-interface/express');
+const { ModelAbstract, Column, FieldFactory, Tab } = require('@admin-interface/core');
 
 const { Post } = require('../../models');
 
