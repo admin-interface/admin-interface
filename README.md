@@ -6,7 +6,7 @@ Also check out our [demo project](https://github.com/admin-interface/admin-inter
 
 ### Installation
 ```bash
-$ npm install --save @admin-interface/core@next @admin-interface/express@next
+$ npm install --save @admin-interface/core @admin-interface/express
 ```
 
 ### Connect to Your project
