@@ -3,9 +3,13 @@
  * @flow
  */
 import lodash from 'lodash';
-
 import Model from '../../ModelAbstract/ModelAbstract';
 import Column from '../../Column/Column';
+import type {
+    DataTableByReference,
+    DataTablePagination,
+    DataTableSearch
+} from '../../Type/DataTable';
 
 /**
  * Get reference "Where" object
@@ -41,7 +45,7 @@ export function getReferenceWhere(model: Model, byReference: DataTableByReferenc
 export function formatQueryModelList(model: Model,
                                      order: Array<Array<any>>,
                                      params: DataTablePagination = { limit: 10, offset: 0 },
-                                     search: Array<DataTableSearch>,
+                                     search: DataTableSearch[],
                                      byReference?: { [string]: any } | null): Object {
     const query        = lodash.merge(
         {

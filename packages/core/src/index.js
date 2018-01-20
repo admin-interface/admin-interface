@@ -13,6 +13,7 @@ import Repository from './Registry/Repository';
 import WidgetAbstract from './WidgetAbstract/WidgetAbstract';
 import WidgetFactory from './WidgetFactory/WidgetFactory';
 
+export * from './Type/DataTable';
 export * from './Column/IColumn';
 export * from './EventEmitter/IEventEmitter';
 export * from './EventEmitter/types';
