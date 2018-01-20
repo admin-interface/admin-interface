@@ -4,6 +4,13 @@
  */
 import lodash from 'lodash';
 import { Registry, Column, formatOrder, getReferenceWhere, formatQueryModelList } from '@admin-interface/core';
+import type {
+    DataTableColumnType,
+    DataTableOrderType,
+    DataTableByReference,
+    DataTableSearch,
+    DataTablePagination
+} from '@admin-interface/core';
 
 import ErrorResponse from '../../../Utils/ErrorResponse/ErrorResponse';
 import { getLinkModelSingle, getLinkModelList } from '../../../Utils/View/LinkType/ModelView';
