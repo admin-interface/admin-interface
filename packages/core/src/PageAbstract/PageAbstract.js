@@ -54,7 +54,7 @@ class PageAbstract implements IPage {
      * Render page.
      * Controller
      */
-    render(): void { // eslint-disable-line class-methods-use-this
+    render(req: express$Request, res: express$Response): void { // eslint-disable-line class-methods-use-this, no-unused-vars
         throw new Error('Method the render is abstract');
     }
 }

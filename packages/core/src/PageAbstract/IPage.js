@@ -15,5 +15,5 @@ export interface IPage {
 
     getWidgets(): WidgetAbstract[],
 
-    render(void | mixed): mixed
+    render(req: express$Request, res: express$Response): mixed
 }
