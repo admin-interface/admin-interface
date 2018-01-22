@@ -2,4 +2,4 @@
 
 # Widget: ModelsInfoWidget
 # Documentation: In progress
-ModelsInfoWidget: "[module] @admin-interface/addons/dist/Widget/ModelsInfoWidget/ModelsInfoWidget.js"
+ModelsInfoWidget: "[module] @admin-interface/extensions/dist/Widget/ModelsInfoWidget/ModelsInfoWidget.js"
