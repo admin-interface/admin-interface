@@ -1,7 +1,7 @@
 [ignore]
 <PROJECT_ROOT>/node_modules/gulp-bower
 <PROJECT_ROOT>/docs
-#<PROJECT_ROOT>/packages/\(\|addons\|core\|express\|front\)/dist
+#<PROJECT_ROOT>/packages/\(\|extensions\|core\|express\|front\)/dist
 
 [include]
 

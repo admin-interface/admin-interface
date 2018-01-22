@@ -1,5 +1,5 @@
 core: '[module] @admin-interface/core'
 
-addons: '[module] @admin-interface/addons'
+extensions: '[module] @admin-interface/extensions'
 
 front: '[module] @admin-interface/front'
