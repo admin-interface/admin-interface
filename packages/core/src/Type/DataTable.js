@@ -1,10 +1,11 @@
 // @flow
+import Column from '../Column/Column';
 
 /**
  * @typedef DataTableOrderType
  */
 export type DataTableOrderType = {
-    column: number,
+    column: Column,
     dir: string
 }
 
@@ -26,8 +27,8 @@ export type DataTableColumnType = {
  * @typedef DataTableByReference
  */
 export type DataTableByReference = {
-    table?: string,
-    value?: string
+    table: string,
+    property: string
 }
 
 /**

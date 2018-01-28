@@ -13,3 +13,4 @@
 module.system=node
 module.ignore_non_literal_requires=true
 #module.name_mapper='^@admin-interface\/\(.*\)$' -> '<PROJECT_ROOT>/packages/\1'
+esproposal.decorators=ignore

@@ -182,7 +182,7 @@ class ModelAbstract implements IModel {
      */
     getPrimaryKey(): string | null {
         // eslint-disable-next-line no-restricted-syntax
-        for (const key: string in this.getModel().attributes) {
+        for (const key in this.getModel().attributes) {
             if (this.getModel().attributes.hasOwnProperty(key)) {
                 if (lodash.hasIn(this.getModel().attributes[ key ], 'primaryKey')) {
                     return key;

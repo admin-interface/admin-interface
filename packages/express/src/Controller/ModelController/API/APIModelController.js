@@ -3,7 +3,7 @@
  * @flow
  */
 import lodash from 'lodash';
-import { Registry, Column, formatOrder, getReferenceWhere, formatQueryModelList } from '@admin-interface/core';
+import { Registry, Column, Container } from '@admin-interface/core';
 import type {
     DataTableColumnType,
     DataTableOrderType,
@@ -30,38 +30,49 @@ export async function getApiList(req: express$Request, res: express$Response, ne
 
     const Model = Registry.getRepository('Model').get(modelKey);
     if (Model) {
-        const Columns: Array<Column> = Model.getColumns();
+        const dataTable = Container.resolve('DataTable');
+        const modelManager = Container.resolve('ModelManager');
 
-        const refModel: string    = req.query.refModel;
-        const refModelKey: string = req.query.refModelKey;
+        modelManager.setModel(Model);
 
-        const dataTableColumns: Array<DataTableColumnType> = req.query.columns;
-        const dataTableOrder: Array<DataTableOrderType>    = req.query.order;
-
-
-        // Reference
-        const byReference: DataTableByReference = {
-            table: '',
-            value: refModelKey
-        };
-        if (refModel) {
-            const refModelObject = Registry.getRepository('Model').get(refModel);
-            if (refModelObject) {
-                byReference.table = refModelObject.getModel().tableName;
-            }
+        if (req.query.refModel && req.query.refModelKey) {
+            modelManager.setReference(req.query.refModel, req.query.refModelKey);
         }
 
+
+        // const Columns: Array<Column> = Model.getColumns();
+
+        const dataTableOrder: Array<DataTableOrderType>    = req.query.order;
+
+        req.query.columns
+            .forEach(column => dataTable.setColumn(column));
+
+        req.query.order
+            .forEach(order => dataTable.setOrder(Model.getColumns()[ order.column ], order.dir));
+
+        // Reference
+        // const byReference: DataTableByReference = {
+        //     table: '',
+        //     value: refModelKey
+        // };
+        // if (refModel) {
+        //     const refModelObject = Registry.getRepository('Model').get(refModel);
+        //     if (refModelObject) {
+        //         byReference.table = refModelObject.getModel().tableName;
+        //     }
+        // }
+
         // Search string
-        const search: Array<DataTableSearch> = dataTableColumns
-            .filter(e => e.search.value)
-            .map(e => ({ column: +e.data, value: e.search.value }));
+        // const search: Array<DataTableSearch> = dataTableColumns
+        //     .filter(e => e.search.value)
+        //     .map(e => ({ column: +e.data, value: e.search.value }));
 
         // Order params
-        const orderBy: DataTableOrderType = dataTableOrder[ 0 ];
-        const order: Array<Array<any>>    = formatOrder(
-            Columns[ orderBy.column ],
-            orderBy.dir.toLocaleUpperCase()
-        );
+        // const orderBy: DataTableOrderType = dataTableOrder[ 0 ];
+        // const order: Array<Array<any>>    = formatOrder(
+        //     Columns[ orderBy.column ],
+        //     orderBy.dir.toLocaleUpperCase()
+        // );
 
         // Pagination params
         const query: DataTablePagination = {
@@ -131,38 +142,21 @@ export async function getApiList(req: express$Request, res: express$Response, ne
  * @returns {Promise.<*>}
  */
 export async function putUpdateSingleModel(req: express$Request, res: express$Response, next: express$NextFunction) {
-    const modelKey: string           = req.params.model_key;
-    const itemId: string             = req.params.id;
-    const body: { [string]: string } = req.body;
-    const Model                      = Registry.getRepository('Model').get(modelKey);
+    const model = Registry.getRepository('Model').get(req.params.model_key);
 
-    if (Model) {
-        // Filter body
-        const fields = {};
-        Object.keys(body).forEach((key: string) => {
-            if (Model.getFieldByKey(key)) {
-                fields[ key ] = body[ key ];
-            }
-        });
+    if (model) {
+        const modelManager = Container.resolve('ModelManager');
 
         try {
-            // Get item
-            const item = await Model.getModel().findById(itemId);
-
-            if (!item) {
-                return next(new ErrorResponse(`Not found item by id: ${ itemId }`, 404, true));
-            }
-
             // Update item
-            const updatedStatus = await item.update(fields);
-
+            const updatedStatus = await modelManager.setModel(model).update(req.params.id, req.body);
             // Send status
             res.json(updatedStatus);
         } catch (err) {
             return next(err);
         }
     }
-    return next(new ErrorResponse(`Not found Model by key ${ modelKey }`, 404, true));
+    return next(new ErrorResponse(`Not found Model by key ${ req.params.model_key }`, 404, true));
 }
 
 /**
@@ -175,35 +169,29 @@ export async function putUpdateSingleModel(req: express$Request, res: express$Re
  * @returns {Promise.<*>}
  */
 export async function deleteSingleModel(req: express$Request, res: express$Response, next: express$NextFunction) {
-    const modelKey: string = req.params.model_key;
-    const itemId: string   = req.params.id;
-    const Model            = Registry.getRepository('Model').get(modelKey);
+    const model = Registry.getRepository('Model').get(req.params.model_key);
 
-    if (Model) {
+    if (model) {
+        const modelManager = Container.resolve('ModelManager');
+
         try {
-            const primaryKey = Model.getPrimaryKey();
-            if (primaryKey) {
-                const deleteStatus = await Model.getModel().destroy({
-                    where: { [ primaryKey ]: itemId }
-                });
-
-                if (!deleteStatus) {
-                    return next(new ErrorResponse(`Not found item by id: ${ itemId }`, 404, true));
-                }
-
-                const redirect = getLinkModelList(Model.getKey());
-
-                return res.json({
-                    deleteStatus,
-                    redirect
-                });
+            // Delete item
+            const deleteStatus = await modelManager.setModel(model).delete(req.params.id);
+            if (!deleteStatus) {
+                return next(new ErrorResponse(`Not found item by id: ${ req.params.id }`, 404, true));
             }
-            return next(new ErrorResponse(`Primary Key not found by model key: ${ modelKey }`, 500, true));
+
+            // Get link to model list
+            const redirect = getLinkModelList(model.getKey());
+            return res.json({
+                deleteStatus,
+                redirect
+            });
         } catch (err) {
             return next(err);
         }
     }
-    return next(new ErrorResponse(`Not found Model by key ${ modelKey }`, 404, true));
+    return next(new ErrorResponse(`Not found Model by key ${ req.params.model_key }`, 404, true));
 }
 
 /**
@@ -216,30 +204,24 @@ export async function deleteSingleModel(req: express$Request, res: express$Respo
  * @returns {Promise.<*>}
  */
 export async function postApiCreateSingleModel(req: express$Request, res: express$Response, next: express$NextFunction) {
-    const modelKey: string = req.params.model_key;
-    const body             = req.body;
-    const Model            = Registry.getRepository('Model').get(modelKey);
+    const model = Registry.getRepository('Model').get(req.params.model_key);
 
-    if (Model) {
-        const primaryKey = Model.getPrimaryKey();
-        if (primaryKey) {
-            // Filter attributes
-            const attributes = lodash.pickBy(body, (value: any, key: string) => key !== primaryKey);
+    if (model) {
+        const modelManager = Container.resolve('ModelManager');
 
-            try {
-                // Create a new item
-                const item     = await Model.getModel().create(attributes);
-                // Get link to the item
-                const redirect = getLinkModelSingle(Model.getKey(), item[ Model.getPrimaryKey() ]);
+        try {
+            // Create a new item
+            const item = await modelManager.setModel(model).create(req.body);
+            // Get link to the item
+            const redirect = getLinkModelSingle(model.getKey(), item[ model.getPrimaryKey() ]);
 
-                return res.json({
-                    item,
-                    redirect
-                });
-            } catch (err) {
-                return next(err);
-            }
+            return res.json({
+                item,
+                redirect
+            });
+        } catch (err) {
+            return next(err);
         }
     }
-    return next(new ErrorResponse(`Not found Model by key ${ modelKey }`, 404, true));
+    return next(new ErrorResponse(`Not found Model by key ${ req.params.model_key }`, 404, true));
 }

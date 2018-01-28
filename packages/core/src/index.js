@@ -1,4 +1,5 @@
 // @flow
+import Container from './Container/Container';
 import Column from './Column/Column';
 import EventEmitter from './EventEmitter/EventEmitter';
 import Filter from './Filter/Filter';
@@ -27,6 +28,7 @@ export * from './WidgetAbstract/IWidget';
 export * from './Utils';
 
 export {
+    Container,
     Column,
     EventEmitter,
     Filter,
