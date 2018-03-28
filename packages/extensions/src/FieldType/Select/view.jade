@@ -8,6 +8,6 @@
             option(value='') -- Please select --
             each option in $field.getOptions().options
                 option(
-                value= option,
+                value= option.toString(),
                 selected= option === value
                 )= option
