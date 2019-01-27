@@ -1,3 +1,6 @@
+# Warning
+***At the moment, the project is suspended. As soon as I have more time, I will continue to develop this project.***
+
 # Admin Interface
 
 Admin Interface it is library for provide Admin UI on base [Sequelize](https://www.npmjs.com/package/sequelize) and [Express](https://www.npmjs.com/package/express).
